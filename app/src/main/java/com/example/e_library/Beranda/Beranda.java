@@ -1,0 +1,68 @@
+package com.example.e_library.Beranda;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.example.e_library.JWTOptions.JWTAuth;
+import com.example.e_library.Login;
+import com.example.e_library.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class Beranda extends AppCompatActivity {
+    int ForceClose = 0;
+    SharedPreferences SessionStorage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_beranda);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
+
+        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+    }
+
+    @Override
+    public boolean onKeyDown(int key_code, KeyEvent key_event) {
+
+        if (key_code == KeyEvent.KEYCODE_BACK) {
+            super.onKeyDown(key_code, key_event);
+
+            if (ForceClose == 0){
+                Toast.makeText(Beranda.this, "Tekan lagi untuk keluar", Toast.LENGTH_LONG).show();
+                ForceClose++;
+
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        ForceClose = 0;
+                    }
+                }, 3600);
+
+            } else {
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+            }
+
+            if (SessionStorage.getInt("Submit", 0) == 1){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return true;
+    }
+}

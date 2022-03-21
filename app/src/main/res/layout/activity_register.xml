@@ -7,19 +7,19 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
     android:padding="20dp"
-    tools:context=".Login">
-    
+    tools:context=".Register">
+
     <ImageView
         android:id="@+id/img_logo_login"
         android:src="@drawable/m3"
         android:layout_width="150dp"
         android:layout_gravity="center"
         android:layout_height="150dp"/>
-    
+
     <TextView
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="Login ke akun anda"
+        android:text="Buat akun anda"
         android:layout_width="wrap_content"
         android:layout_marginTop="45dp"
         android:layout_marginBottom="30dp"
@@ -84,7 +84,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
-        android:text="Masuk"
+        android:text="Daftar"
         app:cornerRadius="7dp"
         android:layout_marginBottom="15dp"
         android:layout_marginStart="2dp"
@@ -102,13 +102,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Tidak punya akun ?"
+            android:text="Sudah punya akun ?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/daftar_akun"
-            android:text="Daftar"
+            android:text="Masuk"
             android:textColor="@color/purple_700"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
