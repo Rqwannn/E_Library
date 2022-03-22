@@ -36,6 +36,35 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/TextInputLayoutNoBorder"
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColorHint="@color/black"
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:textColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        app:cardElevation="4dp"
+        app:cardCornerRadius="7dp"
+        android:layout_marginStart="2.5dp"
+        android:layout_marginEnd="2.5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutNoBorder"
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -65,6 +94,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/TextInputLayoutNoBorder"
             android:id="@+id/password"
+            app:endIconMode="password_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -110,6 +140,7 @@
             android:id="@+id/daftar_akun"
             android:text="Masuk"
             android:textColor="@color/purple_700"
+            android:onClick="Masuk"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

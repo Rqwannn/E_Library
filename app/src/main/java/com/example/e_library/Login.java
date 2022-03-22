@@ -100,4 +100,11 @@ public class Login extends AppCompatActivity {
 
 
     }
+
+    public void Daftar(View view) {
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+    }
 }

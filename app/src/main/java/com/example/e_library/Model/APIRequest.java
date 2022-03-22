@@ -22,4 +22,13 @@ public interface APIRequest {
     Call<ResponseAPI> CheckTokens(
             @Field("token") String token
     );
+
+    @FormUrlEncoded
+    @POST("Register")
+    Call<ResponseAPI> Register(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("email") String email
+    );
+    
 }
