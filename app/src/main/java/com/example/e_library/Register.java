@@ -3,6 +3,7 @@ package com.example.e_library;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,9 @@ import retrofit2.Response;
 
 public class Register extends AppCompatActivity {
     TextInputEditText UsernameField, PasswordField, EmailField;
-    String Username, Password, Email;
+    String username, password, email;
     MaterialButton Submit;
+    SharedPreferences SessionStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,36 +41,46 @@ public class Register extends AppCompatActivity {
         PasswordField = findViewById(R.id.password_field);
         Submit = findViewById(R.id.submit);
 
+        SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
+
+        if (SessionStorage.getInt("Submit", 0) == 1){
+            startActivity(new Intent(Register.this, Beranda.class));
+        }
+
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Username = UsernameField.getText().toString();
-                Password = PasswordField.getText().toString();
-                Email = EmailField.getText().toString();
+                username = UsernameField.getText().toString();
+                password = PasswordField.getText().toString();
+                email = EmailField.getText().toString();
 
-                if (Username.trim().equals("") || Password.trim().equals("") | Email.trim().equals("")) {
+                if (username.trim().equals("") || password.trim().equals("") || email.trim().equals("")) {
                     Toast.makeText(Register.this, "Mohon Untuk Isi Input Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                } else if(!email.contains("@") || (!email.contains("gmail.com") && !email.contains("yahoo.co.id"))){
+                    Toast.makeText(Register.this, "Email Tidak Valid", Toast.LENGTH_SHORT).show();
                 } else {
 
                     APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
                     Call<ResponseAPI> FeedBack = API.Register(
-                            Username,
-                            Password,
-                            Email
+                            username,
+                            password,
+                            email
                     );
 
                     FeedBack.enqueue(new Callback<ResponseAPI>() {
                         @Override
                         public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                            Boolean CheckStatus = response.body().getStatus();
+                            Boolean CheckStatus = response.body().getMeta().getStatus();
 
                             if (CheckStatus){
+                                Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+
                                 Intent MoveAct = new Intent(Register.this, Login.class);
                                 startActivity(MoveAct);
                                 finish();
                                 overridePendingTransition(R.anim.enter_left_to_right, R.anim.exit_left_to_right);
                             } else {
-                                Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT ).show();
+                                Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
                             }
                         }
 

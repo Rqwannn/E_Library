@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface APIRequest {
 
     @FormUrlEncoded
-    @POST("Auth")
+    @POST("login")
     Call<ResponseAPI> Authentication(
             @Field("username") String username,
             @Field("password") String password
@@ -24,11 +24,11 @@ public interface APIRequest {
     );
 
     @FormUrlEncoded
-    @POST("Register")
+    @POST("register")
     Call<ResponseAPI> Register(
             @Field("username") String username,
             @Field("password") String password,
             @Field("email") String email
     );
-    
+
 }

@@ -1,6 +1,8 @@
 package com.example.e_library.Beranda;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +22,8 @@ import java.util.TimerTask;
 public class Beranda extends AppCompatActivity {
     int ForceClose = 0;
     SharedPreferences SessionStorage;
+    SharedPreferences.Editor SessionEdit;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,40 @@ public class Beranda extends AppCompatActivity {
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
 
-        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+
+        fragment = new HomeFragment();
+        loadFragment(fragment);
+
+        if (SessionStorage.getString("FragmentS", null) != null){
+            String Name = SessionStorage.getString("FragmentS", null);
+
+//            if (Name.equals("Kapal")){
+//                fragment = new Ship();
+//                loadFragment(fragment);
+//                BtnView.setSelectedItemId(R.id.btn_ship);
+//            }
+
+        }
+    }
+
+    public void animFragment(Fragment fragment, String Text){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+        transaction.replace(R.id.parent_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+        SessionEdit = SessionStorage.edit();
+        SessionEdit.putString("FragmentS", Text);
+        SessionEdit.apply();
+    }
+
+    public void loadFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.parent_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override

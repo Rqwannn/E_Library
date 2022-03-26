@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroServer {
-    public static final String baseURL = "URL";
+    public static final String baseURL = "https://oneperpus.herokuapp.com/api/";
     public static Retrofit Server;
 
     public static Retrofit KonekServer(){

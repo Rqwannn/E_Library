@@ -32,10 +32,10 @@ public class JWTAuth {
         FeedBack.enqueue(new Callback<ResponseAPI>() {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                Success = response.body().getStatus();
+                Success = response.body().getMeta().getStatus();
 
                 if (!Success){
-                    Toast.makeText(ctx,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ctx,response.body().getMeta().getMessage(), Toast.LENGTH_SHORT).show();
 
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -47,7 +47,7 @@ public class JWTAuth {
                             ctx.startActivity(ForceExit);
                             ((Activity)ctx).finish();
                         }
-                    }, 1000);
+                    }, 100);
                 }
             }
 

@@ -1,15 +1,20 @@
 package com.example.e_library.Response;
 
+import com.example.e_library.JWTOptions.Meta;
+import com.example.e_library.JWTOptions.ResponseData;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import retrofit2.Call;
+
 public class ResponseAPI {
-    private Boolean Status;
-    private String Message;
-    private String Tokens;
+    private Meta meta;
+    private ResponseData data;
 
-    public String getMessage() {
-        return Message;
-    }
+    public Meta getMeta() { return meta; }
 
-    public Boolean getStatus() { return Status; }
-
-    public String getTokens() { return Tokens; }
+    public ResponseData getResponseData() { return data; }
 }

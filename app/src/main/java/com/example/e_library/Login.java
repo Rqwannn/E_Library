@@ -14,11 +14,14 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.JWTOptions.Meta;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +29,7 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     TextInputEditText UsernameField, PasswordField;
-    String Username, Password;
+    String username, password;
     MaterialButton Submit;
     SharedPreferences SessionStorage;
     SharedPreferences.Editor SessionEdit;
@@ -52,31 +55,31 @@ public class Login extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Username = UsernameField.getText().toString();
-                Password = PasswordField.getText().toString();
+                username = UsernameField.getText().toString();
+                password = PasswordField.getText().toString();
 
-                if (Username.trim().equals("") || Password.trim().equals("")){
+                if (username.trim().equals("") || password.trim().equals("")){
                     Toast.makeText(Login.this, "Mohon Untuk Isi Input Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                 } else {
 
                     APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
                     Call<ResponseAPI> FeedBack = API.Authentication(
-                            Username,
-                            Password
+                            username,
+                            password
                     );
 
                     FeedBack.enqueue(new Callback<ResponseAPI>() {
                         @Override
                         public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                            Boolean CheckStatus = response.body().getStatus();
+                            Boolean CheckStatus = response.body().getMeta().getStatus();
 
                             if (CheckStatus){
                                 SessionEdit = SessionStorage.edit();
 
                                 SessionEdit = SessionStorage.edit();
                                 SessionEdit.putInt("Submit", 1);
-                                SessionEdit.putString("Username", Username);
-                                SessionEdit.putString("Tokens", response.body().getTokens());
+                                SessionEdit.putString("Username", username);
+                                SessionEdit.putString("Tokens", response.body().getResponseData().getAccessToken());
                                 SessionEdit.apply();
 
                                 Intent MoveAct = new Intent(Login.this, Beranda.class);
@@ -84,7 +87,7 @@ public class Login extends AppCompatActivity {
                                 finish();
                                 overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
                             } else {
-                                Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT ).show();
+                                Toast.makeText(Login.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
                             }
                         }
 
