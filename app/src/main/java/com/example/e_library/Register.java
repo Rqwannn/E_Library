@@ -32,8 +32,8 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
+                WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         EmailField = findViewById(R.id.email_field);
@@ -70,9 +70,9 @@ public class Register extends AppCompatActivity {
                     FeedBack.enqueue(new Callback<ResponseAPI>() {
                         @Override
                         public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                            Boolean CheckStatus = response.body().getMeta().getStatus();
+                            String CheckStatus = response.body().getMeta().getStatus();
 
-                            if (CheckStatus){
+                            if (CheckStatus.equals("success")){
                                 Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
 
                                 Intent MoveAct = new Intent(Register.this, Login.class);
@@ -101,6 +101,6 @@ public class Register extends AppCompatActivity {
         Intent intent = new Intent(Register.this, Login.class);
         startActivity(intent);
         finish();
-        overridePendingTransition(R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+        overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
     }
 }

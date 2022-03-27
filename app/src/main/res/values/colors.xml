@@ -8,4 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="field_color">#D6EEFF</color>
+    <color name="primary_color">#0083E2</color>
+    <color name="color_a1">#1A374D</color>
+    <color name="color_a2">#6998AB</color>
+    <color name="color_a3">#B1D0E0</color>
+    <color name="color_a4">#D0E4E3</color>
 </resources>

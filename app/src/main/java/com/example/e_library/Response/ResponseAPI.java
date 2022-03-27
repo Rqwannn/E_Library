@@ -17,4 +17,5 @@ public class ResponseAPI {
     public Meta getMeta() { return meta; }
 
     public ResponseData getResponseData() { return data; }
+
 }

@@ -32,9 +32,9 @@ public class JWTAuth {
         FeedBack.enqueue(new Callback<ResponseAPI>() {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                Success = response.body().getMeta().getStatus();
+                String Success = response.body().getMeta().getStatus();
 
-                if (!Success){
+                if (!Success.equals("success")){
                     Toast.makeText(ctx,response.body().getMeta().getMessage(), Toast.LENGTH_SHORT).show();
 
                     new Handler().postDelayed(new Runnable() {

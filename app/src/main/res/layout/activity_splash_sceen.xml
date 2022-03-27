@@ -4,14 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_color"
+    android:paddingVertical="50dp"
     tools:context=".SplashSceen">
 
+    <TextView
+        android:text="e-library"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        style="@style/FontFamilyBold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Sudah baca"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text2"
+        android:layout_width="wrap_content"
+        style="@style/FontFamilyBold"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/text2"
+        android:text="buka hari ini?"
+        android:textSize="28dp"
+        style="@style/FontFamilyBold"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gambar_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <ImageView
+        android:id="@+id/gambar_splash"
+        android:src="@drawable/logo_splash"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="175dp"
-        android:layout_height="175dp"/>
+        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

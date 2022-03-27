@@ -71,9 +71,9 @@ public class Login extends AppCompatActivity {
                     FeedBack.enqueue(new Callback<ResponseAPI>() {
                         @Override
                         public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                            Boolean CheckStatus = response.body().getMeta().getStatus();
+                            String CheckStatus = response.body().getMeta().getStatus();
 
-                            if (CheckStatus){
+                            if (CheckStatus.equals("success")){
                                 SessionEdit = SessionStorage.edit();
 
                                 SessionEdit = SessionStorage.edit();
@@ -87,7 +87,7 @@ public class Login extends AppCompatActivity {
                                 finish();
                                 overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
                             } else {
-                                Toast.makeText(Login.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                                Toast.makeText(Login.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
                             }
                         }
 
@@ -108,6 +108,6 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(Login.this, Register.class);
         startActivity(intent);
         finish();
-        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
     }
 }
