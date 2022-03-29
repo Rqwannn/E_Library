@@ -245,7 +245,7 @@
                 android:layout_height="200dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/data_perwakilan_indonesia"
+                    android:id="@+id/data_buku_favorite"
                     android:layout_width="wrap_content"
                     android:orientation="horizontal"
                     android:scrollbars="horizontal"
@@ -257,6 +257,17 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <ProgressBar
+                app:layout_constraintTop_toTopOf="@+id/parent_sering_di_pinjam"
+                app:layout_constraintBottom_toBottomOf="@+id/parent_sering_di_pinjam"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/pb_data"
+                android:layout_centerInParent="true"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

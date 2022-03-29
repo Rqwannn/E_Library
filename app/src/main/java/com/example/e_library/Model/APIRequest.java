@@ -31,4 +31,7 @@ public interface APIRequest {
             @Field("email") String email
     );
 
+    @GET("buku_favorite")
+    Call<ResponseAPI> BukuFavorite();
+
 }

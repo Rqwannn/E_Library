@@ -3,14 +3,36 @@ package com.example.e_library.Beranda;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.e_library.Adapter.BukuFavorite;
+import com.example.e_library.Login;
+import com.example.e_library.Model.APIRequest;
+import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
+import com.example.e_library.Response.BukuModel;
+import com.example.e_library.Response.ResponseAPI;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
+
+    RecyclerView rvData;
+    RecyclerView.LayoutManager rlData;
+    RecyclerView.Adapter raData;
+    SwipeRefreshLayout SWL;
+    ProgressBar PBData;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -20,6 +42,32 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    public void setDataBukuFavorite(){
+        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+        Call<ResponseAPI> FeedBack = API.BukuFavorite();
+
+        FeedBack.enqueue(new Callback<ResponseAPI>() {
+            @Override
+            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                String Success = response.body().getMeta().getMessage();
+
+                if (Success.equals("success")){
+                    raData = new BukuFavorite(getActivity(), response.body().getResponseData().getBuku());
+                    rvData.setAdapter(raData);
+                    raData.notifyDataSetChanged();
+                    PBData.setVisibility(View.INVISIBLE);
+                } else {
+                    Toast.makeText(getActivity(), response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                Toast.makeText(getActivity(),"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -44,6 +92,24 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        SWL = view.findViewById(R.id.parent_sering_di_pinjam);
+        rvData = view.findViewById(R.id.data_buku_favorite);
+        PBData = view.findViewById(R.id.pb_data);
+
+        rlData = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rvData.setLayoutManager(rlData);
+        setDataBukuFavorite();
+
+        SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SWL.setRefreshing(true);
+                setDataBukuFavorite();
+                SWL.setRefreshing(false);
+            }
+        });
+
         return view;
     }
 }
