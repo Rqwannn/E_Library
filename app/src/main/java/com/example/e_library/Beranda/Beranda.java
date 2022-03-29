@@ -1,5 +1,6 @@
 package com.example.e_library.Beranda;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -8,8 +9,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.e_library.JWTOptions.JWTAuth;
@@ -24,6 +28,7 @@ public class Beranda extends AppCompatActivity {
     SharedPreferences SessionStorage;
     SharedPreferences.Editor SessionEdit;
     Fragment fragment;
+    SearchView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class Beranda extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
+        search = findViewById(R.id.search_buku);
 
 //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
@@ -102,4 +108,5 @@ public class Beranda extends AppCompatActivity {
         }
         return true;
     }
+
 }

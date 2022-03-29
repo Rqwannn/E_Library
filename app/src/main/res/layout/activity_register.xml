@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".Register">
 
     <LinearLayout
@@ -13,36 +14,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_logo_login"
-            android:src="@drawable/login_logo"
-            android:layout_width="match_parent"
+        <TextView
+            style="@style/MangoFontReguler"
+            android:id="@+id/judul_register"
+            android:text="elibrary"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:layout_gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:textSize="28dp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             style="@style/FontFamilyBold"
             android:text="Buat"
             android:layout_width="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="45sp"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:textSize="28dp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="akun anda"
             style="@style/FontFamilyBold"
             android:layout_width="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="30sp"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:text="Email"
-            android:textSize="18dp"
+            android:textSize="18sp"
             style="@style/FontFamilyMedium"
             android:textColor="@color/black"
             android:layout_marginBottom="5dp"
@@ -82,7 +86,7 @@
 
         <TextView
             android:text="Username"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_marginBottom="5dp"
             style="@style/FontFamilyMedium"
@@ -121,7 +125,7 @@
 
         <TextView
             android:text="Password"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/black"
             style="@style/FontFamilyMedium"
             android:layout_marginBottom="5dp"

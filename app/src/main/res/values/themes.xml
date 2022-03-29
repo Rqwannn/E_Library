@@ -36,4 +36,28 @@
     <style name="FontFamilyBold">
         <item name="fontFamily">@font/montserrat_bold</item>
     </style>
+
+    <style name="MangoFontReguler">
+        <item name="fontFamily">@font/mango_regular</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">50dp</item>
+        <item name="cornerSizeBottomLeft">50dp</item>
+    </style>
+
+    <style name="roundImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+        <item name="color">@color/primary_color</item>
+    </style>
+
+    <style name="roundField">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+        <item name="color">@color/primary_color</item>
+    </style>
 </resources>
