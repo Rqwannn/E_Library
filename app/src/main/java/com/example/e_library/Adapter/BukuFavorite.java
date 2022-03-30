@@ -1,6 +1,8 @@
 package com.example.e_library.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_library.Kategori_buku.DetailBuku;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
@@ -48,6 +51,17 @@ public class BukuFavorite extends RecyclerView.Adapter<BukuFavorite.HolderData> 
         Picasso.get()
                 .load(imgURL + Model.getNamaGambar())
                 .into(holder.Gambar);
+
+        holder.Gambar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, DetailBuku.class);
+                intent.putExtra("ID_BUKU", Model.getID());
+                ctx.startActivity(intent);
+                ((Activity)ctx).finish();
+                ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+            }
+        });
     }
 
     @Override
