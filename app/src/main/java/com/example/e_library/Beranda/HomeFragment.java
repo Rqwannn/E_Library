@@ -101,14 +101,14 @@ public class HomeFragment extends Fragment {
         rvData.setLayoutManager(rlData);
         setDataBukuFavorite();
 
-//        SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                SWL.setRefreshing(true);
-//                setDataBukuFavorite();
-//                SWL.setRefreshing(false);
-//            }
-//        });
+        SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SWL.setRefreshing(true);
+                setDataBukuFavorite();
+                SWL.setRefreshing(false);
+            }
+        });
 
         return view;
     }
