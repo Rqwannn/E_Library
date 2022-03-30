@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Kategori_buku.DetailBuku"></activity>
         <activity android:name=".Kategori_buku.DetailKategoriBuku" />
-        <activity android:name=".Beranda.Beranda" />
+        <activity android:name=".Beranda.Beranda"/>
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".SplashSceen">
