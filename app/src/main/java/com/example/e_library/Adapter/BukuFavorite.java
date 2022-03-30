@@ -58,7 +58,6 @@ public class BukuFavorite extends RecyclerView.Adapter<BukuFavorite.HolderData> 
                 Intent intent = new Intent(ctx, DetailBuku.class);
                 intent.putExtra("ID_BUKU", Model.getID());
                 ctx.startActivity(intent);
-                ((Activity)ctx).finish();
                 ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
             }
         });
