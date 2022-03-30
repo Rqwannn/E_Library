@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="field_color">#D6EEFF</color>
-    <color name="primary_color">#B1D1E0</color>
+    <color name="primary_color">#9AD3FE</color>
     <color name="color_a1">#1A374D</color>
     <color name="color_a2">#6998AB</color>
     <color name="color_a3">#B1D0E0</color>
@@ -18,4 +18,7 @@
     <color name="text_color">#3A3A3A</color>
     <color name="button_color">#1351C8</color>
     <color name="transparent">#80000000</color>
+    <color name="gray">#E2E2E2</color>
+    <color name="scrollbar_color">#F37C4C</color>
+    <color name="track_scrollbar_color">#A3A1A2</color>
 </resources>
