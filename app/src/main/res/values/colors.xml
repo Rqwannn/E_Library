@@ -9,9 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="field_color">#D6EEFF</color>
-    <color name="primary_color">#0083E2</color>
+    <color name="primary_color">#B1D1E0</color>
     <color name="color_a1">#1A374D</color>
     <color name="color_a2">#6998AB</color>
     <color name="color_a3">#B1D0E0</color>
     <color name="color_a4">#D0E4E3</color>
+    <color name="background">#9AD3FE</color>
+    <color name="text_color">#3A3A3A</color>
+    <color name="button_color">#1351C8</color>
+    <color name="transparent">#80000000</color>
 </resources>

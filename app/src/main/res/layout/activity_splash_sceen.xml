@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_color"
+    android:background="@color/background"
     android:paddingVertical="50dp"
     tools:context=".SplashSceen">
 
     <TextView
         android:text="e-library"
         android:textSize="20sp"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color"
         style="@style/MangoFontReguler"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,24 +20,24 @@
         android:layout_height="wrap_content"/>
 
     <TextView
+        style="@style/FontFamilyBold"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
         android:text="Sudah baca"
+        android:textColor="@color/text_color"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/text2"
-        android:layout_width="wrap_content"
-        style="@style/FontFamilyBold"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/text2"
-        android:text="buka hari ini?"
+        android:text="buku hari ini?"
         android:textSize="28sp"
         style="@style/FontFamilyBold"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/gambar_splash"
