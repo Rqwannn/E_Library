@@ -17,6 +17,7 @@ import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.JWTOptions.Meta;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
+import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -49,7 +50,11 @@ public class Login extends AppCompatActivity {
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
 
         if (SessionStorage.getInt("Submit", 0) == 1){
-            startActivity(new Intent(Login.this, Beranda.class));
+            if (SessionStorage.getString("Activity", "").equals("Notifikasi")){
+                startActivity(new Intent(Login.this, Notifikasi.class));
+            } else {
+                startActivity(new Intent(Login.this, Beranda.class));
+            }
         }
 
         Submit.setOnClickListener(new View.OnClickListener() {

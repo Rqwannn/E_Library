@@ -45,6 +45,7 @@
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:hideOnScroll="true"
         android:clickable="true"
+        android:onClick="Notifikasi"
         android:backgroundTint="@color/white"
         android:background="@color/primary_color"
         app:borderWidth="0dp"

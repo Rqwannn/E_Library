@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Login;
+import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.Profile.ProfileFragment;
 import com.example.e_library.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -58,12 +59,16 @@ public class Beranda extends AppCompatActivity {
         fragment = new HomeFragment();
         loadFragment(fragment);
 
-        if (SessionStorage.getString("FragmentS", null) != null){
-            String Name = SessionStorage.getString("FragmentS", null);
+        if (!SessionStorage.getString("FragmentS", "").equals("")){
+            String Name = SessionStorage.getString("FragmentS", "");
             if (Name.equals("Profil")){
                 fragment = new ProfileFragment();
                 loadFragment(fragment);
                 BtnView.setSelectedItemId(R.id.btn_profile);
+            } else {
+                fragment = new HomeFragment();
+                loadFragment(fragment);
+                BtnView.setSelectedItemId(R.id.btn_home);
             }
         }
 
@@ -142,4 +147,14 @@ public class Beranda extends AppCompatActivity {
         return true;
     }
 
+    public void Notifikasi(View view) {
+        Intent intent = new Intent(Beranda.this, Notifikasi.class);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
+
+        SessionEdit = SessionStorage.edit();
+        SessionEdit.putString("Activity", "Notifikasi");
+        SessionEdit.apply();
+    }
 }

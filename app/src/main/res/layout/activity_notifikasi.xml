@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Notifikasi.Notifikasi">
+
+    <include layout="@layout/notifikasi_header"
+        android:id="@+id/notifikasi_header"/>
+
+    <FrameLayout
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/warning_notifikasi"
+            app:layout_constraintTop_toBottomOf="@+id/notifikasi_header"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/success_notifikasi"/>
+    </FrameLayout>
+
+</LinearLayout>
