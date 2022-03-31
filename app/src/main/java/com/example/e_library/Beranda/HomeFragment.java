@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-//        SWL = view.findViewById(R.id.parent_sering_di_pinjam);
+        SWL = view.findViewById(R.id.parent_sering_di_pinjam);
         rvData = view.findViewById(R.id.data_buku_favorite);
         PBData = view.findViewById(R.id.pb_data);
 
