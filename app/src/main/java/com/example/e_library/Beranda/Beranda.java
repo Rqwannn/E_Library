@@ -56,11 +56,9 @@ public class Beranda extends AppCompatActivity {
 
 //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
-        fragment = new HomeFragment();
-        loadFragment(fragment);
-
         if (!SessionStorage.getString("FragmentS", "").equals("")){
             String Name = SessionStorage.getString("FragmentS", "");
+
             if (Name.equals("Profil")){
                 fragment = new ProfileFragment();
                 loadFragment(fragment);
@@ -70,6 +68,9 @@ public class Beranda extends AppCompatActivity {
                 loadFragment(fragment);
                 BtnView.setSelectedItemId(R.id.btn_home);
             }
+        } else {
+            fragment = new HomeFragment();
+            loadFragment(fragment);
         }
 
         BtnView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
