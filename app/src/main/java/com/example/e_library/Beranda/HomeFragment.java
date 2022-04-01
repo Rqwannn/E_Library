@@ -1,5 +1,7 @@
 package com.example.e_library.Beranda;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,12 +17,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.BukuFavorite;
+import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.ResponseAPI;
+import com.google.android.material.card.MaterialCardView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

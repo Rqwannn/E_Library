@@ -29,11 +29,6 @@ public class PinjamBuku extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
-
-    public void BackToDetail(View view) {
-        finish();
-        overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
 
         tanggal_pinjam = findViewById(R.id.tanggal_pinjam);
 
@@ -48,19 +43,23 @@ public class PinjamBuku extends AppCompatActivity {
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         PinjamBuku.this, new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int day) {
-                            month = month + 1;
-                            String date = day + "-" + month + "-" + year;
-                            tanggal_pinjam.setText(date);
-                        }
-                    }, year, month, day
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month + 1;
+                        String date = day + "-" + month + "-" + year;
+                        tanggal_pinjam.setText(date);
+                    }
+                }, year, month, day
                 );
 
                 datePickerDialog.show();
 
             }
         });
+    }
 
+    public void BackToDetail(View view) {
+        finish();
+        overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
     }
 }

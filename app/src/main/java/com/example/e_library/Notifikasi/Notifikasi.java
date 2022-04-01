@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
@@ -23,6 +24,7 @@ public class Notifikasi extends AppCompatActivity {
     int ForceClose = 0;
     SharedPreferences SessionStorage;
     SharedPreferences.Editor SessionEdit;
+    ImageView BackImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +35,23 @@ public class Notifikasi extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
-    }
 
-    public void BackToBeranda(View view) {
-        Intent intent = new Intent(Notifikasi.this, Beranda.class);
-        startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.enter_top_to_bottom, R.anim.stay_position);
+        BackImg = findViewById(R.id.back_notifikasi);
+        BackImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Notifikasi.this, Beranda.class);
+                startActivity(intent);
 
-        SessionEdit = SessionStorage.edit();
-        SessionEdit.putString("Activity", "Home");
-        SessionEdit.apply();
+                SessionEdit = SessionStorage.edit();
+                SessionEdit.putString("Activity", "Home");
+                SessionEdit.apply();
+
+                finish();
+                overridePendingTransition(R.anim.enter_top_to_bottom, R.anim.stay_position);
+            }
+        });
+
     }
 
     @Override

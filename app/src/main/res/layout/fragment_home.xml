@@ -82,8 +82,11 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_kategori_buku"
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFD5AE"
+                    android:onClick="DetailBuku"
+                    android:tag="Matematika"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp"
                     android:layout_width="wrap_content"
@@ -116,6 +119,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_marginLeft="10dp"
                     android:backgroundTint="#AEFFCA"
+                    android:onClick="DetailBuku"
+                    android:tag="Bahasa Indonesia"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp"
                     android:layout_width="wrap_content"
@@ -160,6 +165,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_marginRight="10dp"
                     android:backgroundTint="#FFF2AE"
+                    android:onClick="DetailBuku"
+                    android:tag="Sejarah Indonesia"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp"
                     android:layout_width="wrap_content"
@@ -192,6 +199,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_marginLeft="10dp"
                     android:backgroundTint="#D2AEFF"
+                    android:onClick="DetailBuku"
+                    android:tag="Fisika"
                     android:layout_weight="1"
                     app:cardCornerRadius="20dp"
                     android:layout_width="wrap_content"

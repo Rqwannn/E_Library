@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.e_library.JWTOptions.JWTAuth;
+import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.Login;
 import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.Profile.ProfileFragment;
@@ -151,11 +153,21 @@ public class Beranda extends AppCompatActivity {
     public void Notifikasi(View view) {
         Intent intent = new Intent(Beranda.this, Notifikasi.class);
         startActivity(intent);
-        finish();
-        overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
 
         SessionEdit = SessionStorage.edit();
         SessionEdit.putString("Activity", "Notifikasi");
         SessionEdit.apply();
+
+        finish();
+        overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
+    }
+
+    public void DetailBuku(View view) {
+        String Params = view.getTag().toString();
+
+        Intent intent = new Intent(Beranda.this, DetailKategoriBuku.class);
+        intent.putExtra("Kategori", Params);
+        startActivity(intent);
+        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
     }
 }
