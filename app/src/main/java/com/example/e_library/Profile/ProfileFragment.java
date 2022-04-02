@@ -117,7 +117,7 @@ public class ProfileFragment extends Fragment {
         String Token = SessionStorage.getString("Tokens", "");
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
         Call<ResponseAPI> FeedBack = API.Logout(
-                Token
+                "Bearer " + Token
         );
 
         FeedBack.enqueue(new Callback<ResponseAPI>() {
