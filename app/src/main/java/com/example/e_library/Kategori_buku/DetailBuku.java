@@ -1,6 +1,7 @@
 package com.example.e_library.Kategori_buku;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -15,6 +16,9 @@ import com.example.e_library.R;
 
 public class DetailBuku extends AppCompatActivity {
     private int IDBuku;
+    RecyclerView rvData;
+    RecyclerView.Adapter raData;
+    RecyclerView.LayoutManager rlData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

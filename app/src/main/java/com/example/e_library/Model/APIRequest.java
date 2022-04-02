@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface APIRequest {
@@ -33,5 +34,10 @@ public interface APIRequest {
 
     @GET("buku_favorite")
     Call<ResponseAPI> BukuFavorite();
+
+    @GET("logout")
+    Call<ResponseAPI> Logout(
+            @Header("Authorization") String Token
+    );
 
 }

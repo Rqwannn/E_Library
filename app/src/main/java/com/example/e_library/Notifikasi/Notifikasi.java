@@ -48,7 +48,7 @@ public class Notifikasi extends AppCompatActivity {
                 SessionEdit.apply();
 
                 finish();
-                overridePendingTransition(R.anim.enter_top_to_bottom, R.anim.stay_position);
+                overridePendingTransition(R.anim.stay_position, R.anim.enter_top_to_bottom);
             }
         });
 
