@@ -33,7 +33,9 @@ public interface APIRequest {
     );
 
     @GET("buku_favorite")
-    Call<ResponseAPI> BukuFavorite();
+    Call<ResponseAPI> BukuFavorite(
+            @Header("Authorization") String Token
+    );
 
     @POST("logout")
     Call<ResponseAPI> Logout(
