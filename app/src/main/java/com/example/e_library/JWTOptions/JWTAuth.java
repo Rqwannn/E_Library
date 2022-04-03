@@ -26,7 +26,7 @@ public class JWTAuth {
         token = OLDTokens;
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
         Call<ResponseAPI> FeedBack = API.CheckTokens(
-                token
+                "Bearer " + token
         );
 
         FeedBack.enqueue(new Callback<ResponseAPI>() {

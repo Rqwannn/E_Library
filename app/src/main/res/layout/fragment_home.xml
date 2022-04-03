@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,9 +7,6 @@
     android:orientation="vertical"
     tools:context=".Beranda.HomeFragment"
     android:background="@drawable/background_icon">
-
-    <include android:id="@+id/header_home"
-        layout="@layout/home_header"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,6 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <include android:id="@+id/fake_header_home"
+                android:visibility="invisible"
+                layout="@layout/home_header"/>
+
             <HorizontalScrollView
                 android:id="@+id/parent_home_carousel"
                 android:paddingLeft="20dp"
@@ -27,7 +28,7 @@
                 android:fillViewport="true"
                 android:measureAllChildren="false"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fake_header_home"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
@@ -284,4 +285,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+    <include android:id="@+id/header_home"
+        layout="@layout/home_header"/>
+
+</RelativeLayout>

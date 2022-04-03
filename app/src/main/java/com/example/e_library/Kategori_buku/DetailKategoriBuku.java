@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -28,9 +29,11 @@ public class DetailKategoriBuku extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        View view = findViewById(R.id.detail_kategori_header);
+
         search_detail_buku = findViewById(R.id.search_detail_buku);
         text_mapel = findViewById(R.id.text_mapel);
-        back_kategori = findViewById(R.id.back_kategori);
+        back_kategori = view.findViewById(R.id.back_kategori);
         kelas_X = findViewById(R.id.kelas_X);
         kelas_XI = findViewById(R.id.kelas_XI);
         kelas_XII = findViewById(R.id.kelas_XII);
@@ -44,9 +47,7 @@ public class DetailKategoriBuku extends AppCompatActivity {
 
         back_kategori.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
-            }
+            public void onClick(View v) { finish(); }
         });
 
         search_detail_buku.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

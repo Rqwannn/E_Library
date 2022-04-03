@@ -21,7 +21,7 @@ public interface APIRequest {
     @FormUrlEncoded
     @POST("CheckToken")
     Call<ResponseAPI> CheckTokens(
-            @Field("token") String token
+            @Header("Authorization") String token
     );
 
     @FormUrlEncoded
