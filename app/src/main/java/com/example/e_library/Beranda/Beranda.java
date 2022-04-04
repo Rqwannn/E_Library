@@ -141,7 +141,7 @@ public class Beranda extends AppCompatActivity {
                 System.exit(1);
             }
 
-            if (SessionStorage.getInt("Submit", 0) == 1){
+            if (SessionStorage.getBoolean("Submit", false)){
                 return false;
             } else {
                 return true;

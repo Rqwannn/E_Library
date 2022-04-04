@@ -41,7 +41,7 @@ public class JWTAuth {
                         @Override
                         public void run() {
                             SessionEdit = SessionStorage.edit();
-                            SessionEdit.clear();
+                            SessionEdit.clear().commit();
 
                             Intent ForceExit = new Intent(ctx, Login.class);
                             ctx.startActivity(ForceExit);

@@ -32,13 +32,14 @@ public class DetailKategoriBuku extends AppCompatActivity {
         View view = findViewById(R.id.detail_kategori_header);
 
         search_detail_buku = findViewById(R.id.search_detail_buku);
-        text_mapel = findViewById(R.id.text_mapel);
+        text_mapel = view.findViewById(R.id.text_mapel);
         back_kategori = view.findViewById(R.id.back_kategori);
         kelas_X = findViewById(R.id.kelas_X);
         kelas_XI = findViewById(R.id.kelas_XI);
         kelas_XII = findViewById(R.id.kelas_XII);
 
         Bundle extra = getIntent().getExtras();
+        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
         kelas_X.setText(extra.getString("Kategori") + " - Kelas X");
         kelas_XI.setText(extra.getString("Kategori") + " - Kelas XI");

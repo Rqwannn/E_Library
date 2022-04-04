@@ -29,6 +29,7 @@ public class DetailBuku extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Bundle extra = getIntent().getExtras();
+        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
         Toast.makeText(DetailBuku.this, String.valueOf(extra.getInt("ID_BUKU", 0)), Toast.LENGTH_SHORT).show();
     }

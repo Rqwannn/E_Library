@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity {
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
 
-        if (SessionStorage.getInt("Submit", 0) == 1){
+        if (!SessionStorage.getString("Tokens", "").equals("")){
             if (SessionStorage.getString("Activity", "").equals("Notifikasi")){
                 startActivity(new Intent(Login.this, Notifikasi.class));
             } else {
@@ -79,10 +79,9 @@ public class Login extends AppCompatActivity {
                             String CheckStatus = response.body().getMeta().getStatus();
 
                             if (CheckStatus.equals("success")){
-                                SessionEdit = SessionStorage.edit();
 
                                 SessionEdit = SessionStorage.edit();
-                                SessionEdit.putInt("Submit", 1);
+                                SessionEdit.putBoolean("Submit", true);
                                 SessionEdit.putString("Username", username);
                                 SessionEdit.putString("Tokens", response.body().getResponseData().getAccessToken());
                                 SessionEdit.apply();
@@ -105,7 +104,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
 
     }
 

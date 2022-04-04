@@ -32,6 +32,8 @@ public class PinjamBuku extends AppCompatActivity {
 
         tanggal_pinjam = findViewById(R.id.tanggal_pinjam);
 
+        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+
         Calendar calendar = Calendar.getInstance();
 
         final int year = calendar.get(Calendar.YEAR);

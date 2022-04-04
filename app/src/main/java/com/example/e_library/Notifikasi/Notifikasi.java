@@ -35,6 +35,7 @@ public class Notifikasi extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
+        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
         BackImg = findViewById(R.id.back_notifikasi);
         BackImg.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +78,7 @@ public class Notifikasi extends AppCompatActivity {
                 System.exit(1);
             }
 
-            if (SessionStorage.getInt("Submit", 0) == 1){
+            if (!SessionStorage.getString("Tokens", "").equals("")){
                 return false;
             } else {
                 return true;

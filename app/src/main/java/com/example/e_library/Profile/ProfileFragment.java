@@ -69,8 +69,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View header = view.findViewById(R.id.header_profile);
 
-        UsernameProfil = view.findViewById(R.id.username_profile);
+        UsernameProfil = header.findViewById(R.id.username_profile);
         SessionStorage = getActivity().getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         UsernameProfil.setText(SessionStorage.getString("Username", ""));
 
@@ -127,7 +128,7 @@ public class ProfileFragment extends Fragment {
 
                 if (CheckStatus.equals("success")){
                     SessionEdit = SessionStorage.edit();
-                    SessionEdit.clear();
+                    SessionEdit.clear().commit();
 
                     Intent Exit = new Intent(getContext(), Login.class);
                     startActivity(Exit);
