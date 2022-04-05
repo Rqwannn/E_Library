@@ -59,6 +59,8 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Mohon Untuk Isi Input Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                 } else if(!email.contains("@") || (!email.contains("gmail.com") && !email.contains("yahoo.co.id"))){
                     Toast.makeText(Register.this, "Email Tidak Valid", Toast.LENGTH_SHORT).show();
+                } else if (password.length() <= 7) {
+                    Toast.makeText(Register.this, "Password Minimal 8 Karakter", Toast.LENGTH_SHORT).show();
                 } else {
 
                     APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
