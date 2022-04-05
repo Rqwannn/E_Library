@@ -27,6 +27,7 @@ public class Register extends AppCompatActivity {
     String username, password, email;
     MaterialButton Submit;
     SharedPreferences SessionStorage;
+    SharedPreferences.Editor SessionEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,18 @@ public class Register extends AppCompatActivity {
                             String CheckStatus = response.body().getMeta().getStatus();
 
                             if (CheckStatus.equals("success")){
-                                Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                                SessionEdit = SessionStorage.edit();
+                                SessionEdit.putBoolean("Submit", true);
+                                SessionEdit.putString("Username", username);
+                                SessionEdit.putString("Tokens", response.body().getResponseData().getAccessToken());
+                                SessionEdit.apply();
 
-                                Intent MoveAct = new Intent(Register.this, Login.class);
+                                Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                Intent MoveAct = new Intent(Register.this, Beranda.class);
                                 startActivity(MoveAct);
                                 finish();
-                                overridePendingTransition(R.anim.enter_left_to_right, R.anim.exit_left_to_right);
+                                overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
                             } else {
                                 Toast.makeText(Register.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
                             }

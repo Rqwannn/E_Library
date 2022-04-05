@@ -37,6 +37,7 @@ public class ForgotPassword extends AppCompatActivity {
                     Toast.makeText(ForgotPassword.this, "Email Tidak Valid", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(ForgotPassword.this, VerifikasiOTP.class);
+                    intent.putExtra("Email", input_send_otp.getText().toString());
                     startActivity(intent);
                     overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
                 }

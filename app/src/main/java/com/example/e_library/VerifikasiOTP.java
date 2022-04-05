@@ -22,5 +22,10 @@ public class VerifikasiOTP extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         btn_verifikasi_otp = findViewById(R.id.btn_verifikasi_otp);
+        input_code_1 = findViewById(R.id.input_code_1);
+        input_code_2 = findViewById(R.id.input_code_2);
+        input_code_3 = findViewById(R.id.input_code_3);
+        input_code_4 = findViewById(R.id.input_code_4);
+        input_code_5 = findViewById(R.id.input_code_5);
     }
 }
