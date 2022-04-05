@@ -139,6 +139,7 @@
         </com.google.android.material.button.MaterialButton>
 
         <LinearLayout
+            android:layout_marginBottom="15dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -161,6 +162,16 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+        <TextView
+            android:text="Lupa Password ?"
+            android:textColor="@color/primary_color"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/lupa_password"
+            android:onClick="Lupa_Password"
+            style="@style/FontFamily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

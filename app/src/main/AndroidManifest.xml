@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.E_Library"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Notifikasi.Notifikasi"></activity>
+        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".VerifikasiOTP" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".Notifikasi.Notifikasi" />
         <activity android:name=".Pinjam_buku.PinjamBuku" />
         <activity android:name=".Kategori_buku.DetailBuku" />
         <activity android:name=".Kategori_buku.DetailKategoriBuku" />

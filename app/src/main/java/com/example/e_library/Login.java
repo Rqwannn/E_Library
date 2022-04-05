@@ -113,4 +113,10 @@ public class Login extends AppCompatActivity {
         finish();
         overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
     }
+
+    public void Lupa_Password(View view) {
+        Intent intent = new Intent(Login.this, ForgotPassword.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+    }
 }
