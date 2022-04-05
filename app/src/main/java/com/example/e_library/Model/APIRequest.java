@@ -19,9 +19,9 @@ public interface APIRequest {
     );
 
     @FormUrlEncoded
-    @POST("CheckToken")
-    Call<ResponseAPI> CheckTokens(
-            @Header("Authorization") String token
+    @POST("forgot_password")
+    Call<ResponseAPI> ForgotPassword(
+            @Field("email") String Email
     );
 
     @FormUrlEncoded
@@ -30,6 +30,13 @@ public interface APIRequest {
             @Field("username") String username,
             @Field("password") String password,
             @Field("email") String email
+    );
+
+    //  With Token
+
+    @POST("CheckToken")
+    Call<ResponseAPI> CheckTokens(
+            @Header("Authorization") String token
     );
 
     @GET("buku_favorite")
