@@ -6,7 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+
 public class ResetPassword extends AppCompatActivity {
+    MaterialButton btn_reset_password;
+    TextInputEditText new_password_field, konfirmasi_password_field;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
