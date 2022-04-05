@@ -10,6 +10,7 @@ public class ResponseData {
     private String access_token;
     private String token_type;
     private String message;
+    private int kode_otp;
     List<BukuModel> buku;
 
     public String getTokenType() { return token_type; }
@@ -19,4 +20,6 @@ public class ResponseData {
     public String getMessage() { return message; }
 
     public List<BukuModel> getBuku() { return buku; }
+
+    public int getOTP () { return kode_otp; }
 }

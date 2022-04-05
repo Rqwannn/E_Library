@@ -27,7 +27,7 @@
 
     <TextView
         style="@style/FontFamily"
-        android:text="Masukkan OTP yang dikirim"
+        android:text="Masukkan OTP yang dikirim ke"
         android:gravity="center"
         android:textSize="14sp"
         android:layout_marginHorizontal="10dp"
@@ -144,6 +144,7 @@
             style="@style/FontFamily"
             android:text="Kirim Ulang"
             android:textSize="14sp"
+            android:onClick="ResendOTP"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

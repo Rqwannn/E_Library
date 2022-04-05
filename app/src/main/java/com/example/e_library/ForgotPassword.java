@@ -5,12 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.Model.APIRequest;
+import com.example.e_library.Model.RetroServer;
+import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -36,10 +48,35 @@ public class ForgotPassword extends AppCompatActivity {
                 } else if(!input_send_otp.getText().toString().contains("@") || (!input_send_otp.getText().toString().contains("gmail.com") && !input_send_otp.getText().toString().contains("yahoo.co.id"))){
                     Toast.makeText(ForgotPassword.this, "Email Tidak Valid", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(ForgotPassword.this, VerifikasiOTP.class);
-                    intent.putExtra("Email", input_send_otp.getText().toString());
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+
+                    APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+                    Call<ResponseAPI> FeedBack = API.SendOTP(
+                            input_send_otp.getText().toString()
+                    );
+
+                    FeedBack.enqueue(new Callback<ResponseAPI>() {
+                        @Override
+                        public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                            String CheckStatus = response.body().getMeta().getStatus();
+
+                            if (CheckStatus.equals("success")){
+                                Toast.makeText(ForgotPassword.this, "Kode OTP Sudah Terkirim Ke Email Anda", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(ForgotPassword.this, VerifikasiOTP.class);
+                                intent.putExtra("Email", input_send_otp.getText().toString());
+                                intent.putExtra("OTP", response.body().getResponseData().getOTP());
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+                            } else {
+                                Toast.makeText(ForgotPassword.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                            Toast.makeText(ForgotPassword.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });

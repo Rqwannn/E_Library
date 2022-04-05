@@ -19,9 +19,15 @@ public interface APIRequest {
     );
 
     @FormUrlEncoded
-    @POST("forgot_password")
-    Call<ResponseAPI> ForgotPassword(
+    @POST("send_otp")
+    Call<ResponseAPI> SendOTP(
             @Field("email") String Email
+    );
+
+    @FormUrlEncoded
+    @POST("reset_password")
+    Call<ResponseAPI> ResetPassword(
+            @Field("password") String Password
     );
 
     @FormUrlEncoded
