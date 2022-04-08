@@ -4,44 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:gravity="center"
+    android:paddingVertical="20dp"
     android:orientation="vertical"
     tools:context=".VerifikasiOTP">
 
     <ImageView
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/received_otp"
-        android:layout_width="130dp"
-        android:layout_height="130dp"/>
-
-    <TextView
-        android:layout_marginTop="30dp"
-        style="@style/FontFamilyMedium"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="Verifikasi OTP"
+        android:src="@drawable/verifikasi_otp_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        style="@style/FontFamilyBold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="Verifikasi OTP"
+        android:textSize="28sp"
+        android:textStyle="bold" />
     <TextView
         style="@style/FontFamily"
         android:text="Masukkan OTP yang dikirim ke"
         android:gravity="center"
         android:textSize="14sp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/textEmail"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -155,6 +152,7 @@
         android:id="@+id/btn_verifikasi_otp"
         android:text="Submit"
         android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
         app:cornerRadius="7dp"
         android:backgroundTint="@color/button_color"
         android:paddingVertical="14dp"

@@ -16,6 +16,7 @@ import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 public class ForgotPassword extends AppCompatActivity {
 
     MaterialButton btn_submit_otp;
-    EditText input_send_otp;
+    TextInputEditText input_send_otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

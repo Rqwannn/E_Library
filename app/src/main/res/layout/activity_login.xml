@@ -53,7 +53,7 @@
 
         <com.google.android.material.card.MaterialCardView
             app:cardElevation="4dp"
-            app:cardCornerRadius="7dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginStart="2.5dp"
             android:layout_marginEnd="2.5dp"
             android:layout_marginBottom="20dp"
@@ -93,7 +93,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_marginBottom="30dp"
             app:cardElevation="4dp"
-            app:cardCornerRadius="7dp"
+            app:cardCornerRadius="10dp"
             android:layout_marginStart="2.5dp"
             android:layout_marginEnd="2.5dp"
             android:layout_width="match_parent"
