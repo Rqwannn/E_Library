@@ -33,6 +33,7 @@ public class ResetPassword extends AppCompatActivity {
 
         new_password_field = findViewById(R.id.new_password_field);
         konfirmasi_password_field = findViewById(R.id.konfirmasi_password_field);
+        btn_reset_password = findViewById(R.id.btn_reset_password);
 
         btn_reset_password.setOnClickListener(new View.OnClickListener() {
             @Override
