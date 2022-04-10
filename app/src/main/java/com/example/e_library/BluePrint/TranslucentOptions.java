@@ -8,9 +8,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.example.e_library.R;
 
 public class TranslucentOptions {
+
+    public void DisableDarkMode(){
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
 
     public void onlyPortraitScreen(Activity act){
         act.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -18,6 +24,8 @@ public class TranslucentOptions {
 
     public void onlyTransparentStatusBar(Window newWindow, Activity act){
         onlyPortraitScreen(act);
+        DisableDarkMode();
+        
         newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         newWindow.setStatusBarColor(Color.WHITE);
@@ -25,6 +33,8 @@ public class TranslucentOptions {
 
     public void withBGStatusBar(Window newWindow, Activity act){
         onlyPortraitScreen(act);
+        DisableDarkMode();
+
         newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         View decorView = newWindow.getDecorView();
@@ -34,6 +44,7 @@ public class TranslucentOptions {
 
     public void TransparentStatusAndNavigation(Window newWindow, Activity act){
         onlyPortraitScreen(act);
+        DisableDarkMode();
 
         newWindow.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
