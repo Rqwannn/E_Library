@@ -18,32 +18,18 @@ public class TranslucentOptions {
 
     public void onlyTransparentStatusBar(Window newWindow, Activity act){
         onlyPortraitScreen(act);
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R){
-            newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            newWindow.setStatusBarColor(Color.WHITE);
-        } else {
-            newWindow.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-
+        newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        newWindow.setStatusBarColor(Color.WHITE);
     }
 
     public void withBGStatusBar(Window newWindow, Activity act){
         onlyPortraitScreen(act);
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R){
-            newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            View decorView = newWindow.getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            newWindow.setStatusBarColor(act.getResources().getColor(R.color.primary_color));
-        } else {
-            newWindow.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-
+        newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        View decorView = newWindow.getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        newWindow.setStatusBarColor(act.getResources().getColor(R.color.primary_color));
     }
 
     public void TransparentStatusAndNavigation(Window newWindow, Activity act){
