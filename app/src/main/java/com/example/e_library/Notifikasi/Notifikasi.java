@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.Beranda.HomeFragment;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.R;
 
 import java.util.Timer;
@@ -30,9 +31,7 @@ public class Notifikasi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifikasi);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().withBGStatusBar(this.getWindow(), Notifikasi.this);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
         //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));

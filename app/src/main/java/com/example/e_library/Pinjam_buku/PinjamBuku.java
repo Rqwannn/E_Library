@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -26,9 +28,7 @@ public class PinjamBuku extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pinjam_buku);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), PinjamBuku.this);
 
         tanggal_pinjam = findViewById(R.id.tanggal_pinjam);
 
@@ -62,6 +62,5 @@ public class PinjamBuku extends AppCompatActivity {
 
     public void BackToDetail(View view) {
         finish();
-        overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
     }
 }

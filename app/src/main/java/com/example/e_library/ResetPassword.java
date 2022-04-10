@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Response.ResponseAPI;
@@ -27,9 +29,7 @@ public class ResetPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), ResetPassword.this);
 
         new_password_field = findViewById(R.id.new_password_field);
         konfirmasi_password_field = findViewById(R.id.konfirmasi_password_field);

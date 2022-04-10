@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.JWTOptions.Meta;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
@@ -39,9 +40,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), Login.this);
 
         UsernameField = findViewById(R.id.username_field);
         PasswordField = findViewById(R.id.password_field);

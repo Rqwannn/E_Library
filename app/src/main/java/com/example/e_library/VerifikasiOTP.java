@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Response.ResponseAPI;
@@ -39,9 +41,7 @@ public class VerifikasiOTP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verifikasi_otp);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), VerifikasiOTP.this);
 
         btn_verifikasi_otp = findViewById(R.id.btn_verifikasi_otp);
         input_code_1 = findViewById(R.id.input_code_1);

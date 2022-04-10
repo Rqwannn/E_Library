@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.Login;
@@ -48,9 +49,7 @@ public class Beranda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().withBGStatusBar(this.getWindow(), Beranda.this);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
         BtnView = findViewById(R.id.bottom_navigation_view);

@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    MaterialCardView keluar_btn, profile_pop_up;
+    MaterialCardView keluar_btn, profile_pop_up, edit_btn;
     MaterialButton iya, tidak;
     SharedPreferences SessionStorage;
     SharedPreferences.Editor SessionEdit;
@@ -81,6 +81,7 @@ public class ProfileFragment extends Fragment {
         animFadeout = AnimationUtils.loadAnimation(getContext(),
                 R.anim.fade_out);
 
+        edit_btn = view.findViewById(R.id.edit_btn);
         profile_pop_up = view.findViewById(R.id.profile_pop_up);
         iya = view.findViewById(R.id.iya);
         tidak = view.findViewById(R.id.tidak);
@@ -111,7 +112,20 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoveAct(EditProfile.class);
+            }
+        });
+
         return view;
+    }
+
+    public void MoveAct(Class cls){
+        Intent Exit = new Intent(getContext(), cls);
+        startActivity(Exit);
+        ((Activity)getContext()).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
     }
 
     public void Logout(){

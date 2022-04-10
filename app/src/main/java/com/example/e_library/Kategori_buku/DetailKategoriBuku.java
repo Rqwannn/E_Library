@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.R;
 
 public class DetailKategoriBuku extends AppCompatActivity {
@@ -25,9 +27,7 @@ public class DetailKategoriBuku extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_kategori_buku);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().withBGStatusBar(this.getWindow(), DetailKategoriBuku.this);
 
         View view = findViewById(R.id.detail_kategori_header);
 

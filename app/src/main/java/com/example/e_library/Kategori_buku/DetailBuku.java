@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Pinjam_buku.PinjamBuku;
 import com.example.e_library.R;
 
@@ -24,9 +25,7 @@ public class DetailBuku extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_buku);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), DetailBuku.this);
 
         Bundle extra = getIntent().getExtras();
         //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
@@ -36,7 +35,6 @@ public class DetailBuku extends AppCompatActivity {
 
     public void BackToMenu(View view) {
         finish();
-        overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
     }
 
     public void PinjamBuku(View view) {
