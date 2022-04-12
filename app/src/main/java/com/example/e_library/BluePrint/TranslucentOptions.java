@@ -25,7 +25,7 @@ public class TranslucentOptions {
     public void onlyTransparentStatusBar(Window newWindow, Activity act){
         onlyPortraitScreen(act);
         DisableDarkMode();
-        
+
         newWindow.setFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         newWindow.setStatusBarColor(Color.WHITE);
