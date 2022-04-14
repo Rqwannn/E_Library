@@ -40,7 +40,7 @@
 
                     <include layout="@layout/home_carousel"></include>
 
-                    <include layout="@layout/home_carousel"></include>
+                    <include layout="@layout/home_carousel_2"></include>
 
                 </LinearLayout>
 

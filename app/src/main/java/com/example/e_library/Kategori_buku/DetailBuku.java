@@ -33,6 +33,7 @@ public class DetailBuku extends AppCompatActivity {
     SharedPreferences SessionStorage;
     TextView judul_buku, penulis, penerbit, tanggal, deskripsi;
     MaterialButton kategori, jumlah_buku, pinjam_buku;
+    int id_buku;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,6 @@ public class DetailBuku extends AppCompatActivity {
 //                    jumlah_buku.setText();
 //                    pinjam_buku.getTag();
 
-
                 } else {
                     Toast.makeText(DetailBuku.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
                 }
@@ -97,6 +97,7 @@ public class DetailBuku extends AppCompatActivity {
 
     public void PinjamBuku(View view) {
         Intent intent = new Intent(DetailBuku.this, PinjamBuku.class);
+        intent.putExtra("ID_BUKU", id_buku);
         startActivity(intent);
         overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
     }

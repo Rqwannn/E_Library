@@ -43,6 +43,8 @@ public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapte
     public void onBindViewHolder(@NonNull @NotNull PinjamanSayaAdapter.HolderData holder, int position) {
         PinjamanSayaModel Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
+
+
     }
 
     @Override
