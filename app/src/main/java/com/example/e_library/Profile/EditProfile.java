@@ -72,7 +72,11 @@ public class EditProfile extends AppCompatActivity {
                             String CheckStatus = response.body().getMeta().getStatus();
 
                             if (CheckStatus.equals("success")){
+                                Toast.makeText(EditProfile.this, response.body().getMeta().getMessage(), Toast.LENGTH_SHORT).show();
 
+                                Intent intent = new Intent(EditProfile.this, Beranda.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.enter_left_to_right, R.anim.stay_position);
                             } else {
                                 Toast.makeText(EditProfile.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
                             }

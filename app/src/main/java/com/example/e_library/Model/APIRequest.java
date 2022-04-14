@@ -52,6 +52,12 @@ public interface APIRequest {
             @Path(value = "id", encoded = true) int id
     );
 
+    @GET("pinjaman_saya/{id}")
+    Call<ResponseAPI> PinjamanSaya(
+            @Header("Authorization") String Token,
+            @Path(value = "id", encoded = true) int id
+    );
+
     @GET("books")
     Call<ResponseAPI> BukuFavorite(
             @Header("Authorization") String Token
