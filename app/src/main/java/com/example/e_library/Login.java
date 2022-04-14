@@ -81,7 +81,10 @@ public class Login extends AppCompatActivity {
 
                                 SessionEdit = SessionStorage.edit();
                                 SessionEdit.putBoolean("Submit", true);
-                                SessionEdit.putString("Username", username);
+                                SessionEdit.putString("Name", response.body().getResponseData().getOneUser().getName());
+                                SessionEdit.putString("Username", response.body().getResponseData().getOneUser().getUsername());
+                                SessionEdit.putString("Email", response.body().getResponseData().getOneUser().getEmail());
+                                SessionEdit.putString("Phone", response.body().getResponseData().getOneUser().getPhone());
                                 SessionEdit.putString("Tokens", response.body().getResponseData().getAccessToken());
                                 SessionEdit.apply();
 

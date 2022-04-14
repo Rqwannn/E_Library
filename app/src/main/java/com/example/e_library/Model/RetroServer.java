@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroServer {
-    public static final String baseURL = "http://192.168.1.8/elibrary-app/public/api/";
+    public static final String baseURL = "http://192.168.1.6/elibrary-app/public/api/";
     public static final String imgBukuURL = "URL";
     public static Retrofit Server;
 

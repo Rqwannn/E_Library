@@ -3,23 +3,36 @@ package com.example.e_library.Kategori_buku;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.ForgotPassword;
+import com.example.e_library.Model.APIRequest;
+import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Pinjam_buku.PinjamBuku;
 import com.example.e_library.R;
+import com.example.e_library.Response.ResponseAPI;
+import com.example.e_library.VerifikasiOTP;
+import com.google.android.material.button.MaterialButton;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailBuku extends AppCompatActivity {
     private int IDBuku;
-    RecyclerView rvData;
-    RecyclerView.Adapter raData;
-    RecyclerView.LayoutManager rlData;
+    SharedPreferences SessionStorage;
+    TextView judul_buku, penulis, penerbit, tanggal, deskripsi;
+    MaterialButton kategori, jumlah_buku, pinjam_buku;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +41,54 @@ public class DetailBuku extends AppCompatActivity {
         new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), DetailBuku.this);
 
         Bundle extra = getIntent().getExtras();
-        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
+        String Token = SessionStorage.getString("Tokens", "");
 
-        Toast.makeText(DetailBuku.this, String.valueOf(extra.getInt("ID_BUKU", 0)), Toast.LENGTH_SHORT).show();
+        judul_buku = findViewById(R.id.judul_buku);
+        penulis = findViewById(R.id.penulis);
+        penerbit = findViewById(R.id.penerbit);
+        tanggal = findViewById(R.id.tanggal);
+        deskripsi = findViewById(R.id.deskripsi);
+
+        kategori = findViewById(R.id.kategori);
+        jumlah_buku = findViewById(R.id.jumlah_buku);
+        pinjam_buku = findViewById(R.id.pinjam_buku);
+
+        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+        Call<ResponseAPI> FeedBack = API.DetailBuku(
+                "Bearer " + Token,
+                extra.getInt("ID_BUKU", 0)
+        );
+
+        FeedBack.enqueue(new Callback<ResponseAPI>() {
+            @Override
+            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                String CheckStatus = response.body().getMeta().getStatus();
+
+                if (CheckStatus.equals("success")){
+
+//                    judul_buku.setText();
+//                    penulis.setText();
+//                    penerbit.setText();
+//                    tanggal.setText();
+//                    deskripsi.setText();
+//
+//                    kategori.setText();
+//                    jumlah_buku.setText();
+//                    pinjam_buku.getTag();
+
+
+                } else {
+                    Toast.makeText(DetailBuku.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                Toast.makeText(DetailBuku.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void BackToMenu(View view) {

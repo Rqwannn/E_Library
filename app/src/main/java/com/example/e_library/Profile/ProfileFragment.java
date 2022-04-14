@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
+import com.example.e_library.Pinjam_buku.PinjamanSaya;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
@@ -29,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    MaterialCardView keluar_btn, profile_pop_up, edit_btn;
+    MaterialCardView keluar_btn, profile_pop_up, edit_btn, btn_profile;
     MaterialButton iya, tidak;
     SharedPreferences SessionStorage;
     SharedPreferences.Editor SessionEdit;
@@ -75,13 +76,15 @@ public class ProfileFragment extends Fragment {
         SessionStorage = getActivity().getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         UsernameProfil.setText(SessionStorage.getString("Username", ""));
 
-        keluar_btn = view.findViewById(R.id.keluar_btn);
         animFadein = AnimationUtils.loadAnimation(getContext(),
                 R.anim.fade_in);
         animFadeout = AnimationUtils.loadAnimation(getContext(),
                 R.anim.fade_out);
 
         edit_btn = view.findViewById(R.id.edit_btn);
+        btn_profile = view.findViewById(R.id.pinjaman_btn);
+        keluar_btn = view.findViewById(R.id.keluar_btn);
+
         profile_pop_up = view.findViewById(R.id.profile_pop_up);
         iya = view.findViewById(R.id.iya);
         tidak = view.findViewById(R.id.tidak);
@@ -116,6 +119,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 MoveAct(EditProfile.class);
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MoveAct(PinjamanSaya.class);
             }
         });
 

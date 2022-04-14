@@ -8,6 +8,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIRequest {
 
@@ -45,7 +46,13 @@ public interface APIRequest {
             @Header("Authorization") String token
     );
 
-    @GET("buku_favorite")
+    @GET("books?id={id}")
+    Call<ResponseAPI> DetailBuku(
+            @Header("Authorization") String Token,
+            @Path(value = "id", encoded = true) int id
+    );
+
+    @GET("books")
     Call<ResponseAPI> BukuFavorite(
             @Header("Authorization") String Token
     );
@@ -53,6 +60,16 @@ public interface APIRequest {
     @POST("logout")
     Call<ResponseAPI> Logout(
             @Header("Authorization") String Token
+    );
+
+    @FormUrlEncoded
+    @POST("update_profile")
+    Call<ResponseAPI> UpdateProfile(
+            @Header("Authorization") String Token,
+            @Field("name") String Nama,
+            @Field("username") String Username,
+            @Field("email") String Email,
+            @Field("phone") int Phone
     );
 
 }
