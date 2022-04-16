@@ -62,14 +62,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
                 String Success = response.body().getMeta().getMessage();
+                String Status = response.body().getMeta().getStatus();
 
-                if (Success.equals("success")){
+                if (Status.equals("success")){
                     raData = new BukuFavorite(getActivity(), response.body().getResponseData().getBuku());
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.INVISIBLE);
                 } else {
-                    Toast.makeText(getActivity(), response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
+                    Toast.makeText(getActivity(), Success, Toast.LENGTH_LONG ).show();
                 }
             }
 

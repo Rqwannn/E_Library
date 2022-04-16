@@ -22,4 +22,9 @@
     <color name="scrollbar_color">#F37C4C</color>
     <color name="track_scrollbar_color">#A3A1A2</color>
     <color name="btn_profile">#F2F3FB</color>
+
+    //indicator color
+
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#F5A791</color>
 </resources>

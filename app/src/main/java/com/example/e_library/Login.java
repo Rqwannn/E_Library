@@ -48,14 +48,6 @@ public class Login extends AppCompatActivity {
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
 
-        if (!SessionStorage.getString("Tokens", "").equals("")){
-            if (SessionStorage.getString("Activity", "").equals("Notifikasi")){
-                startActivity(new Intent(Login.this, Notifikasi.class));
-            } else {
-                startActivity(new Intent(Login.this, Beranda.class));
-            }
-        }
-
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

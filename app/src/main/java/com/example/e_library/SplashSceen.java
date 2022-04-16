@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.Welcome.Welcome;
 
 public class SplashSceen extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class SplashSceen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashSceen.this, Login.class);
+                Intent intent = new Intent(SplashSceen.this, Welcome.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);

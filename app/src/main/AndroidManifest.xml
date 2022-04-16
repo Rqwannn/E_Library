@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.E_Library"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Pinjam_buku.PinjamanSaya"></activity>
+        <activity android:name=".Welcome.Welcome"></activity>
+        <activity android:name=".Pinjam_buku.PinjamanSaya" />
         <activity android:name=".Profile.EditProfile" />
         <activity android:name=".ResetPassword" />
         <activity android:name=".VerifikasiOTP" />
