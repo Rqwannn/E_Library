@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="20dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/identitas_terakhir_dicari"
+        android:textSize="18sp"
+        style="@style/FontFamilyMedium"
+        android:text="Sejarah Indonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:src="@drawable/close_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
+
+</RelativeLayout>

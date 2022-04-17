@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.R;
+import com.example.e_library.Search.Searching;
 
 public class DetailKategoriBuku extends AppCompatActivity {
     SearchView search_detail_buku;
@@ -51,16 +52,16 @@ public class DetailKategoriBuku extends AppCompatActivity {
             public void onClick(View v) { finish(); }
         });
 
-        search_detail_buku.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        search_detail_buku.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(DetailKategoriBuku.this, query, Toast.LENGTH_SHORT).show();
-                return false;
-            }
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Intent intent = new Intent(DetailKategoriBuku.this, Searching.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
+                }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
+                search_detail_buku.clearFocus();
             }
         });
 

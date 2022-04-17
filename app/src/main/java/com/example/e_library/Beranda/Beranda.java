@@ -20,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import androidx.appcompat.widget.SearchView;
+
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.e_library.BluePrint.TranslucentOptions;
@@ -44,6 +46,7 @@ public class Beranda extends AppCompatActivity {
     BottomNavigationView BtnView;
     Fragment fragment;
     SearchView search;
+    private View editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

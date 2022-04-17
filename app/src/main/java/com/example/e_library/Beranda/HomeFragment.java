@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,9 +24,11 @@ import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
+import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.ResponseAPI;
+import com.example.e_library.Search.Searching;
 import com.google.android.material.card.MaterialCardView;
 
 import retrofit2.Call;
@@ -40,6 +43,8 @@ public class HomeFragment extends Fragment {
     SwipeRefreshLayout SWL;
     ProgressBar PBData;
     SharedPreferences SessionStorage;
+
+    SearchView search;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -103,16 +108,33 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View header = view.findViewById(R.id.header_home);
 
         SWL = view.findViewById(R.id.parent_sering_di_pinjam);
         rvData = view.findViewById(R.id.data_buku_favorite);
         PBData = view.findViewById(R.id.pb_data);
+
+        search = header.findViewById(R.id.search_buku);
 
         SessionStorage = getActivity().getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         rlData = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
         rvData.setLayoutManager(rlData);
         setDataBukuFavorite();
+
+        search.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    Intent intent = new Intent(getContext(), Searching.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
+                }
+
+                search.clearFocus();
+
+            }
+        });
 
         SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

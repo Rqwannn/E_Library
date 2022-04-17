@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingHorizontal="20dp"
+    tools:context=".Search.Searching">
+
+    <LinearLayout
+        android:id="@+id/search_header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:src="@drawable/back_icon"
+            android:onClick="BackToInitial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/searching_buku"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:background="@drawable/search_corner_radius"
+            android:backgroundTint="@color/btn_profile"
+            app:queryBackground="@android:color/transparent"
+            app:iconifiedByDefault="false"
+            app:queryHint="Cari Buku Anda" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/terakhir_dicari"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:text="Terakhir Dicari"
+        app:layout_constraintTop_toBottomOf="@+id/search_header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textStyle="bold"
+        style="@style/FontFamilyBold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/data_buku_favorite"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terakhir_dicari"
+        tools:listitem="@layout/terakhir_dicari"
+        tools:itemCount="3"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/kategori_pilihan"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:text="Kategori Pilihan"
+        app:layout_constraintTop_toBottomOf="@+id/data_buku_favorite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textStyle="bold"
+        style="@style/FontFamilyBold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kategori_pilihan"
+        app:layout_constrainedHeight="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:tag="Matematika"
+                android:onClick="DetailBuku"
+                android:id="@+id/parent_matemarika_kategori"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:background="@drawable/textview_rounded"
+                            android:backgroundTint="#F8A82D"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+
+                        <ImageView
+                            android:src="@drawable/kategori_matematika"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    style="@style/FontFamilyMedium"
+                    android:text="Matematika"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:tag="Bahasa Indonesia"
+                android:onClick="DetailBuku"
+                android:id="@+id/parent_bindo_kategori"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/parent_matemarika_kategori"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:background="@drawable/textview_rounded"
+                            android:backgroundTint="#7DA0E5"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+
+                        <ImageView
+                            android:src="@drawable/kategori_bahasa_indonesia"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    style="@style/FontFamilyMedium"
+                    android:text="Bahasa Indonesia"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:tag="Sejarah Indonesia"
+                android:onClick="DetailBuku"
+                android:id="@+id/parent_sindo_kategori"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/parent_bindo_kategori"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:background="@drawable/textview_rounded"
+                            android:backgroundTint="#915800"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+
+                        <ImageView
+                            android:src="@drawable/kategori_sejarah_indonesia"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    style="@style/FontFamilyMedium"
+                    android:text="Sejarah Indonesia"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:tag="PJOK"
+                android:onClick="DetailBuku"
+                android:id="@+id/parent_pjok_kategori"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/parent_sindo_kategori"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <View
+                            android:background="@drawable/textview_rounded"
+                            android:backgroundTint="#34DD26"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"/>
+
+                        <ImageView
+                            android:src="@drawable/kategori_pjok"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    style="@style/FontFamilyMedium"
+                    android:text="PJOK"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

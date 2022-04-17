@@ -46,7 +46,7 @@ public interface APIRequest {
             @Header("Authorization") String token
     );
 
-    @GET("books?id={id}")
+    @GET("books/{id}")
     Call<ResponseAPI> DetailBuku(
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
@@ -58,7 +58,7 @@ public interface APIRequest {
             @Path(value = "id", encoded = true) int id
     );
 
-    @GET("books")
+    @GET("books/popular")
     Call<ResponseAPI> BukuFavorite(
             @Header("Authorization") String Token
     );

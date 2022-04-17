@@ -185,6 +185,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
+        app:queryBackground="@android:color/transparent"
         android:background="@drawable/search_corner_radius"
         android:backgroundTint="@color/btn_profile"
         app:iconifiedByDefault="false"
