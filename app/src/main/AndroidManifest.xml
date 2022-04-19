@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.E_Library"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Search.HasilSearch"></activity>
+        <activity android:name=".Search.SearchKategori"></activity>
+        <activity android:name=".Search.HasilSearch" />
         <activity android:name=".Search.Searching" />
         <activity android:name=".Welcome.Welcome" />
         <activity android:name=".Pinjam_buku.PinjamanSaya" />

@@ -46,7 +46,6 @@ public class Beranda extends AppCompatActivity {
     BottomNavigationView BtnView;
     Fragment fragment;
     SearchView search;
-    private View editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

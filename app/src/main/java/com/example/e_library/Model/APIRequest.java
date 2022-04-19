@@ -63,6 +63,14 @@ public interface APIRequest {
             @Header("Authorization") String Token
     );
 
+    @FormUrlEncoded
+    @POST("books/hasil_search")
+    Call<ResponseAPI> HasilSearch(
+            @Header("Authorization") String Token,
+            @Field("key") String Key,
+            @Field("filter") String Filter
+    );
+
     @POST("logout")
     Call<ResponseAPI> Logout(
             @Header("Authorization") String Token

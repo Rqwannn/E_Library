@@ -4,6 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="40dp"
+    android:paddingHorizontal="20dp"
     tools:context=".Search.HasilSearch">
+
+    <LinearLayout
+        android:id="@+id/search_header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/filter"
+            android:src="@drawable/filter_icon"
+            android:onClick="Filter"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/searching_buku"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:background="@drawable/search_corner_radius"
+            android:backgroundTint="@color/btn_profile"
+            app:queryBackground="@android:color/transparent"
+            app:iconifiedByDefault="false"
+            app:queryHint="Cari Buku Anda" />
+
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/parent_hasil_search"
+        app:layout_constraintTop_toBottomOf="@+id/search_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/data_hasil_search"
+            android:layout_width="wrap_content"
+            android:layout_columnWeight="1"
+            tools:listitem="@layout/card_detail_kategori_grid"
+            tools:itemCount="10"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/pb_data"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

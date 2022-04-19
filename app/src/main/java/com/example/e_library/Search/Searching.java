@@ -2,18 +2,27 @@ package com.example.e_library.Search;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.Kategori_buku.DetailBuku;
 import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.R;
 
 public class Searching extends AppCompatActivity {
     SearchView search;
+
+    RecyclerView rvData;
+    RecyclerView.LayoutManager rlData;
+    RecyclerView.Adapter raData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +34,10 @@ public class Searching extends AppCompatActivity {
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(Searching.this, query, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Searching.this, HasilSearch.class);
+                intent.putExtra("key", query);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
                 return false;
             }
 
