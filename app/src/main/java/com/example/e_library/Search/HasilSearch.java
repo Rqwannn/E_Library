@@ -53,6 +53,18 @@ public class HasilSearch extends AppCompatActivity {
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                Search = query;
+
+                SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        SWL.setRefreshing(true);
+                        setDataHasilSearch();
+                        SWL.setRefreshing(false);
+                    }
+                });
+
                 return false;
             }
 
@@ -67,7 +79,7 @@ public class HasilSearch extends AppCompatActivity {
 
         Search = extra.getString("key");
 
-        rlData =new LinearLayoutManager(HasilSearch.this, LinearLayoutManager.HORIZONTAL, false);
+        rlData = new GridLayoutManager(HasilSearch.this, 2);
         rvData.setLayoutManager(rlData);
         setDataHasilSearch();
 
