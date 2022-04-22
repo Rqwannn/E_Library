@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Kategori_buku.DetailBuku;
 import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.R;
@@ -28,6 +29,9 @@ public class Searching extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searching);
+
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), Searching.this);
+//        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
 
         search = findViewById(R.id.searching_buku);
 

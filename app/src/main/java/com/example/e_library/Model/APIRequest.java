@@ -71,13 +71,18 @@ public interface APIRequest {
             @Field("filter") String Filter
     );
 
+    @GET("categories")
+    Call<ResponseAPI> getAllCategories(
+            @Header("Authorization") String Token
+    );
+
     @POST("logout")
     Call<ResponseAPI> Logout(
             @Header("Authorization") String Token
     );
 
     @FormUrlEncoded
-    @POST("update_profile")
+    @POST("user")
     Call<ResponseAPI> UpdateProfile(
             @Header("Authorization") String Token,
             @Field("name") String Nama,

@@ -31,71 +31,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/k_matematika"
-        style="@style/FontFamilyMedium"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        app:layout_constraintTop_toBottomOf="@+id/search_kategori"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedHeight="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/swl_data"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/single_border"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="Matematika"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_kategori" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/k_bahasaindonesia"
-        style="@style/FontFamilyMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/single_border"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="Bahasa Indonesia"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/k_matematika" />
-    <TextView
-        android:id="@+id/k_bahasainggris"
-        style="@style/FontFamilyMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/single_border"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="Bahasa Inggris"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/k_bahasaindonesia" />
-    <TextView
-        android:id="@+id/k_pjok"
-        style="@style/FontFamilyMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/single_border"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="Pendidikan jasmasni dan Kesehatan"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/k_bahasainggris" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parent_data_search_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="10"
+            tools:listitem="@layout/card_search_kategori">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/pb_data"
+        android:layout_centerInParent="true"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

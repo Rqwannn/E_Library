@@ -1,5 +1,6 @@
 package com.example.e_library.JWTOptions;
 
+import com.example.e_library.Response.BookCategoriesModel;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.PinjamanSayaModel;
 import com.example.e_library.Response.UserModel;
@@ -14,9 +15,12 @@ public class ResponseData {
     private String token_type;
     private String message;
     private int kode_otp;
+
     List<BukuModel> buku;
-    UserModel user;
     List<PinjamanSayaModel> pinjaman_saya;
+    List<BookCategoriesModel> categories;
+
+    UserModel user;
 
     public String getTokenType() { return token_type; }
 
@@ -26,9 +30,11 @@ public class ResponseData {
 
     public List<BukuModel> getBuku() { return buku; }
 
-    public UserModel getOneUser() { return user; }
-
     public List<PinjamanSayaModel> getPinjamanSaya() { return pinjaman_saya; }
+
+    public  List<BookCategoriesModel> getCategories(){ return categories; }
+
+    public UserModel getOneUser() { return user; }
 
     public int getOTP () { return kode_otp; }
 }

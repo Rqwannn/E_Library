@@ -15,6 +15,7 @@ import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.PinjamanSayaModel;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +45,9 @@ public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapte
         PinjamanSayaModel Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
 
-
+//        Picasso.get()
+//                .load(imgURL + Model.)
+//                .into(holder.gambar_buku_detail_favorite);
     }
 
     @Override
