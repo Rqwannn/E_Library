@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.BukuFavorite;
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
     SharedPreferences SessionStorage;
 
     SearchView search;
+    TextView lihat_lainya;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -113,6 +115,16 @@ public class HomeFragment extends Fragment {
         SWL = view.findViewById(R.id.parent_sering_di_pinjam);
         rvData = view.findViewById(R.id.data_buku_favorite);
         PBData = view.findViewById(R.id.pb_data);
+        lihat_lainya = view.findViewById(R.id.lihat_lainya);
+
+        lihat_lainya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Searching.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.exit_right_to_left, R.anim.stay_position);
+            }
+        });
 
         search = header.findViewById(R.id.search_buku);
 
@@ -128,7 +140,7 @@ public class HomeFragment extends Fragment {
                 if (hasFocus){
                     Intent intent = new Intent(getContext(), Searching.class);
                     startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
+                    getActivity().overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
                 }
 
                 search.clearFocus();
