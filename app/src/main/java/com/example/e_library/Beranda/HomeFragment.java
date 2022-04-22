@@ -29,6 +29,7 @@ import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.ResponseAPI;
+import com.example.e_library.Search.SearchKategori;
 import com.example.e_library.Search.Searching;
 import com.google.android.material.card.MaterialCardView;
 
@@ -120,7 +121,7 @@ public class HomeFragment extends Fragment {
         lihat_lainya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Searching.class);
+                Intent intent = new Intent(getContext(), SearchKategori.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.exit_right_to_left, R.anim.stay_position);
             }
