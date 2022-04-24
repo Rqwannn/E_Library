@@ -3,13 +3,10 @@ package com.example.e_library;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;

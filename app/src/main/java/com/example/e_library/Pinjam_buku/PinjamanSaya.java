@@ -1,7 +1,6 @@
 package com.example.e_library.Pinjam_buku;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -13,12 +12,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.e_library.Adapter.BukuFavorite;
 import com.example.e_library.Adapter.PinjamanSayaAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
-import com.example.e_library.Profile.EditProfile;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
 

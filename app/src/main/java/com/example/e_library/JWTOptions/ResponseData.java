@@ -4,11 +4,9 @@ import com.example.e_library.Response.BookCategoriesModel;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.PinjamanSayaModel;
 import com.example.e_library.Response.UserModel;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import retrofit2.Call;
 
 public class ResponseData {
     private String access_token;

@@ -10,10 +10,8 @@ import android.text.Html;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.e_library.Adapter.SliderAdapter;
 import com.example.e_library.Beranda.Beranda;

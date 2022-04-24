@@ -1,6 +1,5 @@
 package com.example.e_library.Beranda;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,23 +14,17 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.BukuFavorite;
-import com.example.e_library.Kategori_buku.DetailKategoriBuku;
-import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
-import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.R;
-import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.ResponseAPI;
 import com.example.e_library.Search.SearchKategori;
 import com.example.e_library.Search.Searching;
-import com.google.android.material.card.MaterialCardView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -143,9 +136,7 @@ public class HomeFragment extends Fragment {
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
                 }
-
                 search.clearFocus();
-
             }
         });
 

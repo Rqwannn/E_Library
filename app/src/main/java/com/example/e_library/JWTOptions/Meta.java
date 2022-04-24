@@ -1,8 +1,5 @@
 package com.example.e_library.JWTOptions;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Meta {
     private String status;
     private String message;

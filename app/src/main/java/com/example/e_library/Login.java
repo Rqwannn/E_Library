@@ -4,26 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
-import com.example.e_library.JWTOptions.Meta;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
-import com.example.e_library.Notifikasi.Notifikasi;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
