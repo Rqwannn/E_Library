@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,6 +95,13 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 profile_pop_up.startAnimation(animFadeout);
                 profile_pop_up.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        profile_pop_up.clearAnimation();
+                    }
+                }, 520);
             }
         });
 

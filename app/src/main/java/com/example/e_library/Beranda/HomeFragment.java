@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
                     raData = new BukuFavorite(getActivity(), response.body().getResponseData().getBuku());
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
-                    PBData.setVisibility(View.INVISIBLE);
+                    PBData.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(getActivity(), Success, Toast.LENGTH_LONG ).show();
                 }
@@ -123,7 +123,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SearchKategori.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.exit_right_to_left, R.anim.stay_position);
+                getActivity().overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
             }
         });
 
@@ -141,7 +141,7 @@ public class HomeFragment extends Fragment {
                 if (hasFocus){
                     Intent intent = new Intent(getContext(), Searching.class);
                     startActivity(intent);
-                    getActivity().overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+                    getActivity().overridePendingTransition(R.anim.enter_bottom_to_top, R.anim.stay_position);
                 }
 
                 search.clearFocus();

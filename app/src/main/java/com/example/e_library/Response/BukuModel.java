@@ -14,6 +14,8 @@ public class BukuModel {
     private String updated_at;
     private String deleted_at;
 
+    private BookCategoriesModel categories;
+
     public int getID() { return id; }
 
     public String getTitle() { return title; }
@@ -37,4 +39,6 @@ public class BukuModel {
     public String getUpdated() { return updated_at; }
 
     public String getDeleted() { return deleted_at; }
+
+    public BookCategoriesModel getCategories() { return categories; }
 }

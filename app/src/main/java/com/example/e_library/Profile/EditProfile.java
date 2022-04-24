@@ -42,9 +42,12 @@ public class EditProfile extends AppCompatActivity {
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
 
+        simpan_perubahan = findViewById(R.id.simpan_perubahan);
+
         nama.setText(SessionStorage.getString("Name", ""));
         username.setText(SessionStorage.getString("Username", ""));
         email.setText(SessionStorage.getString("Email", ""));
+        phone.setText(SessionStorage.getString("Phone", ""));
 
         simpan_perubahan.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
-    android:paddingHorizontal="20dp"
     tools:context=".Search.HasilSearch">
 
     <LinearLayout
         android:id="@+id/search_header"
+        android:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -39,6 +39,7 @@
     </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:paddingHorizontal="20dp"
         android:id="@+id/parent_hasil_search"
         app:layout_constraintTop_toBottomOf="@+id/search_header"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,5 +71,20 @@
         android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <include android:id="@+id/black_screen"
+             android:layout_width="match_parent"
+             android:visibility="gone"
+             android:layout_height="match_parent"
+             layout="@layout/black_screen"
+        />
+
+    <include android:id="@+id/filter_parent"
+             layout="@layout/card_filter"
+             android:visibility="gone"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

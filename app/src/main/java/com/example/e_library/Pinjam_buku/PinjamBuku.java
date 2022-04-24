@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -151,6 +152,13 @@ public class PinjamBuku extends AppCompatActivity {
             public void onClick(View v) {
                 pinjaman_pop_up.startAnimation(animFadeout);
                 pinjaman_pop_up.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pinjaman_pop_up.clearAnimation();
+                    }
+                }, 520);
             }
         });
 

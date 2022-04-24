@@ -2,6 +2,7 @@ package com.example.e_library.Search;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,8 +11,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,6 +29,8 @@ import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,10 +44,15 @@ public class HasilSearch extends AppCompatActivity {
     SwipeRefreshLayout SWL;
     ProgressBar PBData;
     SharedPreferences SessionStorage;
+    MaterialCardView filter_parent;
+    MaterialButton filter_btn;
+    FrameLayout black_screen;
+    int before_id_aktif = 0, reset_animation = 0;
 
     String Filter = "", Search = "";
     Call<ResponseAPI> FeedBack;
     SearchView search;
+    Animation animFadein, animFadeout, enter_bottom_to_top, exit_bottom_to_top;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,22 +66,26 @@ public class HasilSearch extends AppCompatActivity {
         rvData = findViewById(R.id.data_hasil_search);
         PBData = findViewById(R.id.pb_data);
 
+        filter_parent = findViewById(R.id.filter_parent);
+        black_screen = findViewById(R.id.black_screen);
+
+        animFadein = AnimationUtils.loadAnimation(HasilSearch.this,
+                R.anim.fade_in);
+        animFadeout = AnimationUtils.loadAnimation(HasilSearch.this,
+                R.anim.fade_out);
+
+        enter_bottom_to_top = AnimationUtils.loadAnimation(HasilSearch.this,
+                R.anim.enter_bottom_to_top);
+        exit_bottom_to_top = AnimationUtils.loadAnimation(HasilSearch.this,
+                R.anim.exit_bottom_to_top);
+
         search = findViewById(R.id.searching_buku);
 
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                 Search = query;
-
-                SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        SWL.setRefreshing(true);
-                        setDataHasilSearch();
-                        SWL.setRefreshing(false);
-                    }
-                });
+                setDataHasilSearch();
 
                 return false;
             }
@@ -95,6 +113,30 @@ public class HasilSearch extends AppCompatActivity {
                 SWL.setRefreshing(false);
             }
         });
+
+
+        black_screen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (reset_animation == 0){
+                    black_screen.setVisibility(View.GONE);
+                    black_screen.startAnimation(animFadeout);
+
+                    filter_parent.setVisibility(View.GONE);
+                    filter_parent.startAnimation(exit_bottom_to_top);
+
+                    reset_animation = 1;
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            black_screen.clearAnimation();
+                            filter_parent.clearAnimation();
+                        }
+                    }, 500);
+                }
+            }
+        });
     }
 
     public void setDataHasilSearch(){
@@ -116,7 +158,7 @@ public class HasilSearch extends AppCompatActivity {
                     raData = new KategoriBukuAdapter(HasilSearch.this, response.body().getResponseData().getBuku(), R.layout.card_detail_kategori_grid);
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
-                    PBData.setVisibility(View.INVISIBLE);
+                    PBData.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(HasilSearch.this, Success, Toast.LENGTH_LONG ).show();
                 }
@@ -130,5 +172,83 @@ public class HasilSearch extends AppCompatActivity {
     }
 
     public void Filter(View view) {
+        search.clearFocus();
+
+        black_screen.startAnimation(animFadein);
+        black_screen.setVisibility(View.VISIBLE);
+
+        filter_parent.startAnimation(enter_bottom_to_top);
+        filter_parent.setVisibility(View.VISIBLE);
+        reset_animation = 0;
+    }
+
+    public void AddFilter(View view) {
+
+        if (before_id_aktif != 0 && !String.valueOf(before_id_aktif).equals(String.valueOf(view.getId()))){
+            filter_btn = findViewById(before_id_aktif);
+
+            filter_btn.setStrokeColor(ColorStateList.valueOf(Color.BLACK));
+            filter_btn.setTextColor(Color.BLACK);
+        }
+
+        String Params = view.getTag().toString();
+        Filter = Params;
+
+        filter_btn = findViewById(view.getId());
+
+        filter_btn.setStrokeColor(ColorStateList.valueOf(Color.GREEN));
+        filter_btn.setTextColor(Color.GREEN);
+
+        before_id_aktif = view.getId();
+
+    }
+
+    public void AturUlang(View view) {
+        Filter = "";
+        search.setQueryHint("Cari Buku Anda");
+
+        filter_btn = findViewById(before_id_aktif);
+
+        filter_btn.setStrokeColor(ColorStateList.valueOf(Color.BLACK));
+        filter_btn.setTextColor(Color.BLACK);
+
+        black_screen.setVisibility(View.GONE);
+        black_screen.startAnimation(animFadeout);
+
+        filter_parent.setVisibility(View.GONE);
+        filter_parent.startAnimation(exit_bottom_to_top);
+
+        reset_animation = 1;
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                black_screen.clearAnimation();
+                filter_parent.clearAnimation();
+            }
+        }, 500);
+
+        setDataHasilSearch();
+    }
+
+    public void Pakai(View view) {
+        black_screen.setVisibility(View.GONE);
+        black_screen.startAnimation(animFadeout);
+
+        filter_parent.setVisibility(View.GONE);
+        filter_parent.startAnimation(exit_bottom_to_top);
+
+        reset_animation = 1;
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                black_screen.clearAnimation();
+                filter_parent.clearAnimation();
+            }
+        }, 500);
+
+        search.setQueryHint("Cari " + Filter);
+        setDataHasilSearch();
     }
 }

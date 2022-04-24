@@ -53,7 +53,7 @@ public class PinjamanSaya extends AppCompatActivity {
                     raData = new PinjamanSayaAdapter(PinjamanSaya.this, response.body().getResponseData().getPinjamanSaya());
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
-                    PBData.setVisibility(View.INVISIBLE);
+                    PBData.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(PinjamanSaya.this, Success, Toast.LENGTH_LONG ).show();
                 }
