@@ -58,6 +58,15 @@ public interface APIRequest {
             @Path(value = "id", encoded = true) int id
     );
 
+    @FormUrlEncoded
+    @POST("pinjam_buku")
+    Call<ResponseAPI> PinjamBuku(
+            @Header("Authorization") String Token,
+            @Field("id") int Id,
+            @Field("tanggal_pinjam") String Tanggal,
+            @Field("jumlah_buku") int Jumlah_Buku
+    );
+
     @GET("books/popular")
     Call<ResponseAPI> BukuFavorite(
             @Header("Authorization") String Token

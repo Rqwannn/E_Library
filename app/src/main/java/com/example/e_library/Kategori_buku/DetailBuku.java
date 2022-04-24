@@ -45,6 +45,8 @@ public class DetailBuku extends AppCompatActivity {
         SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         String Token = SessionStorage.getString("Tokens", "");
 
+        id_buku = extra.getInt("ID_BUKU", 0);
+
         judul_buku = findViewById(R.id.judul_buku);
         penulis = findViewById(R.id.penulis);
         penerbit = findViewById(R.id.penerbit);
@@ -58,7 +60,7 @@ public class DetailBuku extends AppCompatActivity {
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
         Call<ResponseAPI> FeedBack = API.DetailBuku(
                 "Bearer " + Token,
-                extra.getInt("ID_BUKU", 0)
+                id_buku
         );
 
         FeedBack.enqueue(new Callback<ResponseAPI>() {
@@ -76,7 +78,6 @@ public class DetailBuku extends AppCompatActivity {
 //
 //                    kategori.setText();
 //                    jumlah_buku.setText();
-//                    pinjam_buku.getTag();
 
                 } else {
                     Toast.makeText(DetailBuku.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
