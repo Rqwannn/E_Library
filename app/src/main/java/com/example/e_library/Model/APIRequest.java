@@ -46,6 +46,8 @@ public interface APIRequest {
             @Header("Authorization") String token
     );
 
+    // Books API
+
     @GET("books/{categories}")
     Call<ResponseAPI> getBukuKategori(
             @Header("Authorization") String Token,
@@ -57,6 +59,21 @@ public interface APIRequest {
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
     );
+
+    @GET("books/popular")
+    Call<ResponseAPI> BukuFavorite(
+            @Header("Authorization") String Token
+    );
+
+    @FormUrlEncoded
+    @POST("books/hasil_search")
+    Call<ResponseAPI> HasilSearch(
+            @Header("Authorization") String Token,
+            @Field("key") String Key,
+            @Field("filter") String Filter
+    );
+
+    // Pinjaman API
 
     @GET("pinjaman_saya/{id}")
     Call<ResponseAPI> PinjamanSaya(
@@ -73,28 +90,14 @@ public interface APIRequest {
             @Field("jumlah_buku") int Jumlah_Buku
     );
 
-    @GET("books/popular")
-    Call<ResponseAPI> BukuFavorite(
-            @Header("Authorization") String Token
-    );
-
-    @FormUrlEncoded
-    @POST("books/hasil_search")
-    Call<ResponseAPI> HasilSearch(
-            @Header("Authorization") String Token,
-            @Field("key") String Key,
-            @Field("filter") String Filter
-    );
+    // Categories API
 
     @GET("categories")
     Call<ResponseAPI> getAllCategories(
             @Header("Authorization") String Token
     );
 
-    @POST("logout")
-    Call<ResponseAPI> Logout(
-            @Header("Authorization") String Token
-    );
+    // Profile API
 
     @FormUrlEncoded
     @POST("user")
@@ -104,6 +107,13 @@ public interface APIRequest {
             @Field("username") String Username,
             @Field("email") String Email,
             @Field("phone") int Phone
+    );
+
+    // Other API
+
+    @POST("logout")
+    Call<ResponseAPI> Logout(
+            @Header("Authorization") String Token
     );
 
 }
