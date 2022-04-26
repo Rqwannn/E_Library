@@ -46,6 +46,12 @@ public interface APIRequest {
             @Header("Authorization") String token
     );
 
+    @GET("books/{categories}")
+    Call<ResponseAPI> getBukuKategori(
+            @Header("Authorization") String Token,
+            @Path(value = "categories", encoded = true) String Kategori
+    );
+
     @GET("books/{id}")
     Call<ResponseAPI> DetailBuku(
             @Header("Authorization") String Token,

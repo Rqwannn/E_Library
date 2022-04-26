@@ -17,7 +17,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class JWTAuth {
-    private Boolean Success;
     private SharedPreferences SessionStorage;
     private SharedPreferences.Editor SessionEdit;
     private String token;

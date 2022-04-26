@@ -1,14 +1,19 @@
 package com.example.e_library.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.e_library.Beranda.Beranda;
+import com.example.e_library.Kategori_buku.DetailKategoriBuku;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.BookCategoriesModel;
@@ -42,6 +47,16 @@ public class SearchKategoriAdapter extends RecyclerView.Adapter<SearchKategoriAd
     public void onBindViewHolder(@NonNull @NotNull SearchKategoriAdapter.HolderData holder, int position) {
         BookCategoriesModel Model = Data.get(position);
         holder.text_kategori.setText(Model.getName());
+
+        holder.parent_kategori.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, DetailKategoriBuku.class);
+                intent.putExtra("Kategori", Model.getName());
+                ctx.startActivity(intent);
+                ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+            }
+        });
     }
 
     @Override
@@ -51,11 +66,13 @@ public class SearchKategoriAdapter extends RecyclerView.Adapter<SearchKategoriAd
 
     public class HolderData extends RecyclerView.ViewHolder {
         TextView text_kategori;
+        LinearLayout parent_kategori;
 
         public HolderData(@NonNull @NotNull View itemView) {
             super(itemView);
 
             text_kategori = itemView.findViewById(R.id.text_kategori);
+            parent_kategori = itemView.findViewById(R.id.parent_kategori);
 
         }
     }
