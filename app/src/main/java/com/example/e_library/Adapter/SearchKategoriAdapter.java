@@ -12,13 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.Kategori_buku.DetailKategoriBuku;
-import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.BookCategoriesModel;
-import com.example.e_library.Response.PinjamanSayaModel;
-import com.google.android.material.imageview.ShapeableImageView;
 
 import org.jetbrains.annotations.NotNull;
 

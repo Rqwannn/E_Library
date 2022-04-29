@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.E_Library"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Search.SearchKategori"></activity>
+        <activity android:name=".Konfirmasi"></activity>
+        <activity android:name=".Chart.DaftarBuku" />
+        <activity android:name=".Search.SearchKategori" />
         <activity android:name=".Search.HasilSearch" />
         <activity android:name=".Search.Searching" />
         <activity android:name=".Welcome.Welcome" />

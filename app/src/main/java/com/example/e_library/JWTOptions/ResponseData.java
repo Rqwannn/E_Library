@@ -2,7 +2,7 @@ package com.example.e_library.JWTOptions;
 
 import com.example.e_library.Response.BookCategoriesModel;
 import com.example.e_library.Response.BukuModel;
-import com.example.e_library.Response.PinjamanSayaModel;
+import com.example.e_library.Response.TransactionsModel;
 import com.example.e_library.Response.UserModel;
 
 import java.util.List;
@@ -12,10 +12,10 @@ public class ResponseData {
     private String access_token;
     private String token_type;
     private String message;
-    private int kode_otp;
+    private int code;
 
     List<BukuModel> buku;
-    List<PinjamanSayaModel> pinjaman_saya;
+    List<TransactionsModel> pinjaman_saya;
     List<BookCategoriesModel> categories;
 
     UserModel user;
@@ -28,11 +28,11 @@ public class ResponseData {
 
     public List<BukuModel> getBuku() { return buku; }
 
-    public List<PinjamanSayaModel> getPinjamanSaya() { return pinjaman_saya; }
+    public List<TransactionsModel> getPinjamanSaya() { return pinjaman_saya; }
 
-    public  List<BookCategoriesModel> getCategories(){ return categories; }
+    public List<BookCategoriesModel> getCategories(){ return categories; }
 
     public UserModel getOneUser() { return user; }
 
-    public int getOTP () { return kode_otp; }
+    public int getOTP () { return code; }
 }

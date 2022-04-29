@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
-import com.example.e_library.Response.BukuModel;
-import com.example.e_library.Response.PinjamanSayaModel;
+import com.example.e_library.Response.TransactionsModel;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,10 +20,10 @@ import java.util.List;
 
 public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapter.HolderData> {
 
-    private List<PinjamanSayaModel> Data;
+    private List<TransactionsModel> Data;
     private Context ctx;
 
-    public PinjamanSayaAdapter(Context ctx, List<PinjamanSayaModel> getPinjamanSaya) {
+    public PinjamanSayaAdapter(Context ctx, List<TransactionsModel> getPinjamanSaya) {
         this.ctx = ctx;
         this.Data = getPinjamanSaya;
     }
@@ -42,7 +39,7 @@ public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapte
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull PinjamanSayaAdapter.HolderData holder, int position) {
-        PinjamanSayaModel Model = Data.get(position);
+        TransactionsModel Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
 
 //        Picasso.get()

@@ -20,13 +20,13 @@ public interface APIRequest {
     );
 
     @FormUrlEncoded
-    @POST("send_otp")
+    @POST("password/email")
     Call<ResponseAPI> SendOTP(
             @Field("email") String Email
     );
 
     @FormUrlEncoded
-    @POST("reset_password")
+    @POST("password/reset")
     Call<ResponseAPI> ResetPassword(
             @Field("password") String Password
     );
@@ -75,10 +75,9 @@ public interface APIRequest {
 
     // Pinjaman API
 
-    @GET("pinjaman_saya/{id}")
+    @GET("my-loan")
     Call<ResponseAPI> PinjamanSaya(
-            @Header("Authorization") String Token,
-            @Path(value = "id", encoded = true) int id
+            @Header("Authorization") String Token
     );
 
     @FormUrlEncoded
