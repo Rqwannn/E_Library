@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.Chart.DaftarBuku;
+import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
-import com.example.e_library.Pinjam_buku.PinjamBuku;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
@@ -91,9 +93,38 @@ public class DetailBuku extends AppCompatActivity {
     }
 
     public void PinjamBuku(View view) {
-        Intent intent = new Intent(DetailBuku.this, PinjamBuku.class);
-        intent.putExtra("ID_BUKU", id_buku);
-        startActivity(intent);
-        overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+
+        Toast.makeText(this, "Mohon tunggu peminjaman sedang di proses", Toast.LENGTH_SHORT).show();
+
+        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+        String Token = SessionStorage.getString("Tokens", "");
+        Call<ResponseAPI> FeedBack = API.SingleLoan(
+                "Bearer " + Token,
+                id_buku
+        );
+
+        FeedBack.enqueue(new Callback<ResponseAPI>() {
+            @Override
+            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                String CheckStatus = response.body().getMeta().getStatus();
+
+                if (CheckStatus.equals("success")){
+
+                    Toast.makeText(DetailBuku.this, "Buku anda sudah terdaftar", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(DetailBuku.this, DaftarBuku.class);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+                } else {
+                    Toast.makeText(DetailBuku.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                Toast.makeText(DetailBuku.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

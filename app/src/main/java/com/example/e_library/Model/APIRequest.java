@@ -80,13 +80,11 @@ public interface APIRequest {
             @Header("Authorization") String Token
     );
 
-    @FormUrlEncoded
-    @POST("pinjam_buku")
-    Call<ResponseAPI> PinjamBuku(
+
+    @GET("loan/{id}")
+    Call<ResponseAPI> SingleLoan(
             @Header("Authorization") String Token,
-            @Field("id") int Id,
-            @Field("tanggal_pinjam") String Tanggal,
-            @Field("jumlah_buku") int Jumlah_Buku
+            @Path(value = "id", encoded = true) int id
     );
 
     // Categories API
