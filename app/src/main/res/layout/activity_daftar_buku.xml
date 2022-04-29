@@ -126,7 +126,7 @@
                 android:layout_gravity="center_horizontal"
                 app:cornerRadius="10dp"
                 android:textSize="16sp"
-                android:paddingHorizontal="40dp"
+                android:paddingHorizontal="50dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/button_color"
                 android:paddingVertical="14dp"
