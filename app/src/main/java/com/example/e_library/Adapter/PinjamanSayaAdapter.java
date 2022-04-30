@@ -13,6 +13,7 @@ import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.TransactionsModel;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,9 +43,14 @@ public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapte
         TransactionsModel Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
 
-//        Picasso.get()
-//                .load(imgURL + Model.)
-//                .into(holder.gambar_buku_detail_favorite);
+        holder.judul_buku.setText(Model.getBook().getTitle());
+        holder.pengarang_buku.setText(Model.getBook().getAuthor());
+        holder.tanggal_peminjaman.setText(Model.getLoanDate());
+        holder.jadwal_peminjaman.setText(Model.getReturnDate());
+
+        Picasso.get()
+                .load(imgURL + Model.getImg())
+                .into(holder.gambar_buku_detail_favorite);
     }
 
     @Override

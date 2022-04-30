@@ -4,13 +4,8 @@ public class TransactionsModel {
     private int id;
     private int book_id;
     private int users_id;
-    private String quantity;
-    private String loan_date;
-    private String return_date;
-    private String status;
-    private String created_at;
-    private String updated_at;
-    private String deleted_at;
+    private String quantity, loan_date, return_date, status, created_at, updated_at, deleted_at, img;
+    private BukuModel book;
 
     public int getId() { return id; }
 
@@ -27,4 +22,8 @@ public class TransactionsModel {
     public String getUpdated() { return updated_at; }
 
     public String getDeleted() { return deleted_at; }
+
+    public String getImg() { return img; }
+
+    public BukuModel getBook() { return book; }
 }

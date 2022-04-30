@@ -1,8 +1,12 @@
 package com.example.e_library.Model;
 
+import com.example.e_library.BluePrint.Items;
 import com.example.e_library.Response.ResponseAPI;
 
+import java.util.Map;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -80,6 +84,11 @@ public interface APIRequest {
             @Header("Authorization") String Token
     );
 
+    @POST("loan")
+    Call<ResponseAPI> LoanBuku(
+            @Header("Authorization") String Token,
+            @Body Items items
+    );
 
     @GET("loan/{id}")
     Call<ResponseAPI> SingleLoan(
