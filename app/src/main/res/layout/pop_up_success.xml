@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView android:id="@+id/pop_up"
+    app:shapeAppearanceOverlay="@style/All.ShapeAppearanceOverlay.MaterialCardView.Cut"
+    android:layout_width="250dp"
+    android:layout_height="175dp"
+    android:backgroundTint="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ceklis_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ceklis_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/FontFamilyMedium"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ceklis_img"
+            android:textAlignment="center"
+            android:id="@+id/text_pop_up"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Transaksi  Peminjaman berhasil! Silahkan cek pinjaman saya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/oke"
+            android:text="Oke"
+            app:layout_constraintTop_toBottomOf="@+id/text_pop_up"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="10dp"
+            android:minHeight="28dp"
+            style="@style/FontFamilyMedium"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/button_color"
+            android:insetBottom="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
