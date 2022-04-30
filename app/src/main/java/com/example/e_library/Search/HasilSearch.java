@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Adapter.KategoriBukuAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
@@ -54,9 +55,10 @@ public class HasilSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_search);
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), HasilSearch.this);
-//        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(HasilSearch.this, SessionStorage.getString("Tokens", ""));
 
         SWL = findViewById(R.id.parent_hasil_search);
         rvData = findViewById(R.id.data_hasil_search);
@@ -92,7 +94,6 @@ public class HasilSearch extends AppCompatActivity {
             }
         });
 
-        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         Bundle extra = getIntent().getExtras();
 
         Search = extra.getString("key");

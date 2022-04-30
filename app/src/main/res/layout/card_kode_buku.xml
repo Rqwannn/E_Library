@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="#F2F3FB"
+    android:layout_marginBottom="20dp"
+    app:shapeAppearanceOverlay="@style/All.ShapeAppearanceOverlay.MaterialCardView.Cut"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_kode_transaksi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="14sp"
+            style="@style/FontFamilyMedium"
+            android:layout_marginBottom="5dp"
+            android:text="Kode Transaksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/kode_transaksi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_kode_transaksi"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            style="@style/FontFamilyBold"
+            android:text="ABC38594"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/right_edit_icon"
+            android:src="@drawable/back_right_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

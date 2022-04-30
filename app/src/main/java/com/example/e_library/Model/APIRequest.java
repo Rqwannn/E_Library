@@ -3,6 +3,7 @@ package com.example.e_library.Model;
 import com.example.e_library.BluePrint.Items;
 import com.example.e_library.Response.ResponseAPI;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -87,7 +88,7 @@ public interface APIRequest {
     @POST("loan")
     Call<ResponseAPI> LoanBuku(
             @Header("Authorization") String Token,
-            @Body Items items
+            @Body Items item
     );
 
     @GET("loan/{id}")

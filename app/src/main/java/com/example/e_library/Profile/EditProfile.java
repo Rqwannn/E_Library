@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
@@ -30,9 +31,10 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), EditProfile.this);
-
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
+
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), EditProfile.this);
+//        new JWTAuth().CheckTokens(EditProfile.this, SessionStorage.getString("Tokens", ""));
 
         nama = findViewById(R.id.nama);
         username = findViewById(R.id.username);

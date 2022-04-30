@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Chart.DaftarBuku;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
@@ -40,7 +41,8 @@ public class DetailBuku extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
         SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         String Token = SessionStorage.getString("Tokens", "");
-
+//        new JWTAuth().CheckTokens(DetailBuku.this, SessionStorage.getString("Tokens", ""));
+        
         id_buku = extra.getInt("ID_BUKU", 0);
 
         judul_buku = findViewById(R.id.judul_buku);

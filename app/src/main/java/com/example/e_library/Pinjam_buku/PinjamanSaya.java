@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Adapter.PinjamanSayaAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
@@ -65,14 +66,14 @@ public class PinjamanSaya extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pinjaman_saya);
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
+
         new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), PinjamanSaya.this);
-//        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(PinjamanSaya.this, SessionStorage.getString("Tokens", ""));
 
         SWL = findViewById(R.id.swl_data);
         rvData = findViewById(R.id.parent_data_pinjaman_saya);
         PBData = findViewById(R.id.pb_data);
-
-        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         rlData = new LinearLayoutManager(PinjamanSaya.this, LinearLayoutManager.VERTICAL, false);
         rvData.setLayoutManager(rlData);

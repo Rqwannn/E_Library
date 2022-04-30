@@ -2,6 +2,7 @@ package com.example.e_library.Adapter;
 
 import android.content.Context;
 import android.text.InputFilter;
+import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_library.BluePrint.InputFilterMinMax;
+import com.example.e_library.Chart.DaftarBuku;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
 import com.example.e_library.Response.TransactionsModel;
@@ -22,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Map;
 
 public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.HolderData> {
 
@@ -52,17 +55,21 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
 
         holder.quantity_buku.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "10")});
 
+        holder.quantity_buku.setText("1");
+
+        int quantityQuery = Integer.parseInt(holder.quantity_buku.getText().toString());
+
         holder.plus_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.quantity_buku.setText(Integer.parseInt(holder.quantity_buku.getText().toString()) + 1);
+                holder.quantity_buku.setText(quantityQuery + 1);
             }
         });
 
         holder.minus_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.quantity_buku.setText(Integer.parseInt(holder.quantity_buku.getText().toString()) - 1);
+                holder.quantity_buku.setText(quantityQuery - 1);
             }
         });
 

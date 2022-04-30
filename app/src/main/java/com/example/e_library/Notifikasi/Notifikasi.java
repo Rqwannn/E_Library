@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Beranda.Beranda;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.R;
 
 import java.util.Timer;
@@ -30,7 +31,7 @@ public class Notifikasi extends AppCompatActivity {
         new TranslucentOptions().withBGStatusBar(this.getWindow(), Notifikasi.this);
 
         SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
-        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(Notifikasi.this, SessionStorage.getString("Tokens", ""));
 
         BackImg = findViewById(R.id.back_notifikasi);
         BackImg.setOnClickListener(new View.OnClickListener() {

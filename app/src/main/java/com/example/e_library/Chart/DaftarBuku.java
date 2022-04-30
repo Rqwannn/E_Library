@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -13,13 +14,16 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.DaftarBukuAdapter;
-import com.example.e_library.Adapter.PinjamanSayaAdapter;
+import com.example.e_library.BluePrint.Items;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.Konfirmasi;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Pinjam_buku.PinjamanSaya;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +37,9 @@ public class DaftarBuku extends AppCompatActivity {
     SwipeRefreshLayout SWL;
     ProgressBar PBData;
     SharedPreferences SessionStorage;
+
+    MaterialButton submit;
+    TextInputEditText tanggal_pinjam;
 
     public void setDaftarBuku(){
         String Token = SessionStorage.getString("Tokens", "");
@@ -64,10 +71,49 @@ public class DaftarBuku extends AppCompatActivity {
         });
     }
 
+//    public void SubmitDaftarBuku(){
+//        items = new Items();
+//        items.loan_date = tanggal_pinjam.getText().toString();
+//        items.status = "DIPINJAM";
+//
+//        String Token = SessionStorage.getString("Tokens", "");
+//        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+//
+//        Call<ResponseAPI> FeedBack = API.LoanBuku(
+//                "Bearer " + Token,
+//                items
+//        );
+//
+//        FeedBack.enqueue(new Callback<ResponseAPI>() {
+//            @Override
+//            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+//                String Success = response.body().getMeta().getMessage();
+//                String Status = response.body().getMeta().getStatus();
+//
+//                if (Status.equals("success")){
+//                    Intent intent = new Intent(DaftarBuku.this, PinjamanSaya.class);
+//                    startActivity(intent);
+//                    finish();
+//                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+//
+//                    Toast.makeText(DaftarBuku.this, "Buku Berhasil Di Checkout", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(DaftarBuku.this, Success, Toast.LENGTH_LONG ).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+//                Toast.makeText(DaftarBuku.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_buku);
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), DaftarBuku.this);
 //        new JWTAuth().CheckTokens(DaftarBuku.this, SessionStorage.getString("Tokens", ""));
@@ -75,8 +121,6 @@ public class DaftarBuku extends AppCompatActivity {
         SWL = findViewById(R.id.swl_data);
         rvData = findViewById(R.id.parent_data_daftar_buku);
         PBData = findViewById(R.id.pb_data);
-
-        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         rlData = new LinearLayoutManager(DaftarBuku.this, LinearLayoutManager.VERTICAL, false);
         rvData.setLayoutManager(rlData);
@@ -88,6 +132,23 @@ public class DaftarBuku extends AppCompatActivity {
                 SWL.setRefreshing(true);
                 setDaftarBuku();
                 SWL.setRefreshing(false);
+            }
+        });
+
+        submit = findViewById(R.id.submit);
+        tanggal_pinjam = findViewById(R.id.tanggal_pinjam);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tanggal_pinjam.getText().toString().equals("")){
+                    Toast.makeText(DaftarBuku.this, "Mohon Isi Tanggal Peminjaman", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(DaftarBuku.this, Konfirmasi.class);
+                    intent.putExtra("loan_date", tanggal_pinjam.getText().toString());
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+                }
             }
         });
     }

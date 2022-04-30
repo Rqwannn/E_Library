@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Adapter.KategoriBukuAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Pinjam_buku.PinjamanSaya;
@@ -94,6 +95,7 @@ public class DetailKategoriBuku extends AppCompatActivity {
         new TranslucentOptions().withBGStatusBar(this.getWindow(), DetailKategoriBuku.this);
 
         View view = findViewById(R.id.detail_kategori_header);
+        SessionStorage = getSharedPreferences("SESSION", MODE_PRIVATE);
 
         search_detail_buku = findViewById(R.id.search_detail_buku);
         text_mapel = view.findViewById(R.id.text_mapel);
@@ -103,7 +105,7 @@ public class DetailKategoriBuku extends AppCompatActivity {
         kelas_XII = findViewById(R.id.kelas_XII);
 
         Bundle extra = getIntent().getExtras();
-        //        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(DetailKategoriBuku.this, SessionStorage.getString("Tokens", ""));
 
         newKategori = extra.getString("Kategori");
 

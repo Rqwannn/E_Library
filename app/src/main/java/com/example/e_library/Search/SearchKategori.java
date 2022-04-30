@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Adapter.SearchKategoriAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
@@ -66,15 +67,14 @@ public class SearchKategori extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_kategori);
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), SearchKategori.this);
-//        new JWTAuth().CheckTokens(Beranda.this, SessionStorage.getString("Tokens", ""));
+//        new JWTAuth().CheckTokens(SearchKategori.this, SessionStorage.getString("Tokens", ""));
 
         SWL = findViewById(R.id.swl_data);
         rvData = findViewById(R.id.parent_data_search_kategori);
         PBData = findViewById(R.id.pb_data);
-
-        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
 
         rlData = new LinearLayoutManager(SearchKategori.this, LinearLayoutManager.VERTICAL, false);
         rvData.setLayoutManager(rlData);
