@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="10"
-            tools:listitem="@layout/card_pinjaman_saya">
+            tools:listitem="@layout/card_kode_buku">
 
         </androidx.recyclerview.widget.RecyclerView>
 

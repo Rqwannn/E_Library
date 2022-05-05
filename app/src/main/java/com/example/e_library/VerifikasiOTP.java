@@ -28,9 +28,40 @@ public class VerifikasiOTP extends AppCompatActivity {
     MaterialButton btn_verifikasi_otp;
     EditText input_code_1, input_code_2, input_code_3, input_code_4, input_code_5;
     TextView textEmail;
-    String otp_1, otp_2, otp_3, otp_4, otp_5, otp;
+    String otp_1, otp_2, otp_3, otp_4, otp_5, otp, final_otp;
     Bundle extra;
+    Boolean ExecTimer;
     int Limit_sending = 1, timer;
+
+    public void VerifyCode(){
+        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+        Call<ResponseAPI> FeedBack = API.KonfirmasiOTP(
+                final_otp
+        );
+
+        FeedBack.enqueue(new Callback<ResponseAPI>() {
+            @Override
+            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                String Success = response.body().getMeta().getMessage();
+                String Status = response.body().getMeta().getStatus();
+
+                if (Status.equals("success")){
+                    Toast.makeText(VerifikasiOTP.this, "Kode OTP Terverifikasi", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(VerifikasiOTP.this, ResetPassword.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+                } else {
+                    Toast.makeText(VerifikasiOTP.this, Success, Toast.LENGTH_LONG ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                Toast.makeText(VerifikasiOTP.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +86,12 @@ public class VerifikasiOTP extends AppCompatActivity {
         btn_verifikasi_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String final_otp = otp_1 + otp_2 + otp_3 + otp_4 + otp_5;
+                final_otp = otp_1 + otp_2 + otp_3 + otp_4 + otp_5;
 
                 if ( final_otp.length() != 5 || final_otp.equals(otp) ){
                     Toast.makeText(VerifikasiOTP.this, "Kode OTP Tidak Valid", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(VerifikasiOTP.this, "Kode OTP Terverifikasi", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(VerifikasiOTP.this, ResetPassword.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
+                    VerifyCode();
                 }
             }
         });
@@ -189,7 +216,7 @@ public class VerifikasiOTP extends AppCompatActivity {
 
     public void ResendOTP(View view) {
 
-        Boolean ExecTimer = false;
+        ExecTimer = false;
 
         if ( timer == 0 ){
             Limit_sending = 1;

@@ -42,7 +42,7 @@ public class DetailBuku extends AppCompatActivity {
         SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
         String Token = SessionStorage.getString("Tokens", "");
 //        new JWTAuth().CheckTokens(DetailBuku.this, SessionStorage.getString("Tokens", ""));
-        
+
         id_buku = extra.getInt("ID_BUKU", 0);
 
         judul_buku = findViewById(R.id.judul_buku);

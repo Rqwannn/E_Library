@@ -15,7 +15,7 @@ public class ResponseData {
     private int code;
 
     List<BukuModel> buku;
-    List<TransactionsModel> pinjaman_saya;
+    List<TransactionsModel> transaction;
     List<BookCategoriesModel> categories;
 
     UserModel user;
@@ -28,7 +28,7 @@ public class ResponseData {
 
     public List<BukuModel> getBuku() { return buku; }
 
-    public List<TransactionsModel> getPinjamanSaya() { return pinjaman_saya; }
+    public List<TransactionsModel> getPinjamanSaya() { return transaction; }
 
     public List<BookCategoriesModel> getCategories(){ return categories; }
 

@@ -37,6 +37,12 @@ public interface APIRequest {
     );
 
     @FormUrlEncoded
+    @POST("password/code/check")
+    Call<ResponseAPI> KonfirmasiOTP(
+            @Field("code") String Code
+    );
+
+    @FormUrlEncoded
     @POST("register")
     Call<ResponseAPI> Register(
             @Field("username") String username,

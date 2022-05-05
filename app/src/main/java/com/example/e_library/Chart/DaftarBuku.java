@@ -71,44 +71,6 @@ public class DaftarBuku extends AppCompatActivity {
         });
     }
 
-//    public void SubmitDaftarBuku(){
-//        items = new Items();
-//        items.loan_date = tanggal_pinjam.getText().toString();
-//        items.status = "DIPINJAM";
-//
-//        String Token = SessionStorage.getString("Tokens", "");
-//        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
-//
-//        Call<ResponseAPI> FeedBack = API.LoanBuku(
-//                "Bearer " + Token,
-//                items
-//        );
-//
-//        FeedBack.enqueue(new Callback<ResponseAPI>() {
-//            @Override
-//            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-//                String Success = response.body().getMeta().getMessage();
-//                String Status = response.body().getMeta().getStatus();
-//
-//                if (Status.equals("success")){
-//                    Intent intent = new Intent(DaftarBuku.this, PinjamanSaya.class);
-//                    startActivity(intent);
-//                    finish();
-//                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
-//
-//                    Toast.makeText(DaftarBuku.this, "Buku Berhasil Di Checkout", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(DaftarBuku.this, Success, Toast.LENGTH_LONG ).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseAPI> call, Throwable t) {
-//                Toast.makeText(DaftarBuku.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
