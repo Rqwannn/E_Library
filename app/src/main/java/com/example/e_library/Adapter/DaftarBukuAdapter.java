@@ -1,6 +1,7 @@
 package com.example.e_library.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.text.InputFilter;
 import android.util.ArrayMap;
 import android.view.LayoutInflater;
@@ -30,10 +31,20 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
 
     private List<TransactionsModel> Data;
     private Context ctx;
+    int id_book[], quantity[];
 
     public DaftarBukuAdapter(Context ctx, List<TransactionsModel> getDaftarBuku) {
         this.ctx = ctx;
         this.Data = getDaftarBuku;
+    }
+
+    public int[] getIdBook() {
+        return id_book;
+    }
+
+
+    public int[] getQuantity() {
+        return quantity;
     }
 
     @NonNull
@@ -54,15 +65,20 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
         holder.penerbit.setText(Model.getBook().getPublisher());
 
         holder.quantity_buku.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "10")});
-
         holder.quantity_buku.setText("1");
 
         int quantityQuery = Integer.parseInt(holder.quantity_buku.getText().toString());
+
+        holder.quantity_buku.setTag(String.valueOf(Model.getBook().getID()));
+
+        id_book[position] = Model.getBook().getID();
+        quantity[position] = quantityQuery;
 
         holder.plus_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 holder.quantity_buku.setText(quantityQuery + 1);
+                quantity[position] = quantityQuery;
             }
         });
 
@@ -70,6 +86,7 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
             @Override
             public void onClick(View v) {
                 holder.quantity_buku.setText(quantityQuery - 1);
+                quantity[position] = quantityQuery;
             }
         });
 

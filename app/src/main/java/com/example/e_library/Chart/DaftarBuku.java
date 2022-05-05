@@ -37,9 +37,10 @@ public class DaftarBuku extends AppCompatActivity {
     SwipeRefreshLayout SWL;
     ProgressBar PBData;
     SharedPreferences SessionStorage;
-
+    int id_book[], quantity[];
     MaterialButton submit;
     TextInputEditText tanggal_pinjam;
+    DaftarBukuAdapter getAdapterClass;
 
     public void setDaftarBuku(){
         String Token = SessionStorage.getString("Tokens", "");
@@ -55,7 +56,9 @@ public class DaftarBuku extends AppCompatActivity {
                 String Status = response.body().getMeta().getStatus();
 
                 if (Status.equals("success")){
-                    raData = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getPinjamanSaya());
+                    getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getPinjamanSaya());
+                    raData = getAdapterClass;
+
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.GONE);
@@ -106,8 +109,13 @@ public class DaftarBuku extends AppCompatActivity {
                 if (tanggal_pinjam.getText().toString().equals("")){
                     Toast.makeText(DaftarBuku.this, "Mohon Isi Tanggal Peminjaman", Toast.LENGTH_SHORT).show();
                 } else {
+                    id_book = getAdapterClass.getIdBook();
+                    quantity = getAdapterClass.getQuantity();
+
                     Intent intent = new Intent(DaftarBuku.this, Konfirmasi.class);
                     intent.putExtra("loan_date", tanggal_pinjam.getText().toString());
+                    intent.putExtra("id_book", id_book);
+                    intent.putExtra("quantity", quantity);
                     startActivity(intent);
                     overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
                 }
