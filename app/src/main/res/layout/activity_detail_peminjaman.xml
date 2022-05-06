@@ -78,7 +78,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/parent_data_pinjaman_saya"
+            android:id="@+id/parent_data_detail_pinjaman_saya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="10"

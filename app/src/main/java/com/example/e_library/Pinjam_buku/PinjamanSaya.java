@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.e_library.Adapter.PinjamanSayaAdapter;
+import com.example.e_library.Adapter.KodePinjamanAdapter;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.JWTOptions.JWTAuth;
 import com.example.e_library.Model.APIRequest;
@@ -46,7 +46,7 @@ public class PinjamanSaya extends AppCompatActivity {
                 String Status = response.body().getMeta().getStatus();
 
                 if (Status.equals("success")){
-                    raData = new PinjamanSayaAdapter(PinjamanSaya.this, response.body().getResponseData().getPinjamanSaya());
+                    raData = new KodePinjamanAdapter(PinjamanSaya.this, response.body().getResponseData().getPinjamanSaya());
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.GONE);

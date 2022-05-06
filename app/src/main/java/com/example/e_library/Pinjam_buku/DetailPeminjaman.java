@@ -1,9 +1,11 @@
 package com.example.e_library.Pinjam_buku;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.PinjamanSayaAdapter;
+import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
@@ -64,6 +67,30 @@ public class DetailPeminjaman extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_peminjaman);
+        SessionStorage = getSharedPreferences("SESSION", Context.MODE_PRIVATE);
+
+        new TranslucentOptions().onlyTransparentStatusBar(this.getWindow(), DetailPeminjaman.this);
+//        new JWTAuth().CheckTokens(DetailPeminjaman.this, SessionStorage.getString("Tokens", ""));
+
+        Bundle extra = getIntent().getExtras();
+        id_kode_peminjaman = extra.getInt("id_pinjaman");
+
+        SWL = findViewById(R.id.swl_data);
+        rvData = findViewById(R.id.parent_data_detail_pinjaman_saya);
+        PBData = findViewById(R.id.pb_data);
+
+        rlData = new LinearLayoutManager(DetailPeminjaman.this, LinearLayoutManager.VERTICAL, false);
+        rvData.setLayoutManager(rlData);
+        setDataPinjamanSaya();
+
+        SWL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SWL.setRefreshing(true);
+                setDataPinjamanSaya();
+                SWL.setRefreshing(false);
+            }
+        });
     }
 
     public void BackToPinjaman(View view) {
