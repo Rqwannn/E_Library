@@ -51,6 +51,7 @@ public class KodePinjamanAdapter extends RecyclerView.Adapter<KodePinjamanAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(ctx, DetailPeminjaman.class);
                 intent.putExtra("id_pinjaman", Model.getId());
+                intent.putExtra("kode_peminjaman", Model.getKodePeminjaman());
                 ctx.startActivity(intent);
                 ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
             }

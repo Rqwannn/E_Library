@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.PinjamanSayaAdapter;
@@ -31,6 +32,7 @@ public class DetailPeminjaman extends AppCompatActivity {
     ProgressBar PBData;
     SharedPreferences SessionStorage;
     int id_kode_peminjaman;
+    TextView kode_transaksi;
 
     public void setDataPinjamanSaya(){
         String Token = SessionStorage.getString("Tokens", "");
@@ -78,6 +80,9 @@ public class DetailPeminjaman extends AppCompatActivity {
         SWL = findViewById(R.id.swl_data);
         rvData = findViewById(R.id.parent_data_detail_pinjaman_saya);
         PBData = findViewById(R.id.pb_data);
+        kode_transaksi = findViewById(R.id.kode_transaksi);
+
+        kode_transaksi.setText(extra.getString("kode_transaksi"));
 
         rlData = new LinearLayoutManager(DetailPeminjaman.this, LinearLayoutManager.VERTICAL, false);
         rvData.setLayoutManager(rlData);
