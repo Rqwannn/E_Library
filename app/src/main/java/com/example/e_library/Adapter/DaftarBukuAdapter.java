@@ -32,6 +32,7 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
     private List<TransactionsModel> Data;
     private Context ctx;
     int id_book[], quantity[];
+    String judul_buku[], penerbit[];
 
     public DaftarBukuAdapter(Context ctx, List<TransactionsModel> getDaftarBuku) {
         this.ctx = ctx;
@@ -45,6 +46,14 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
 
     public int[] getQuantity() {
         return quantity;
+    }
+
+    public String[] getJudulBuku(){
+        return judul_buku;
+    }
+
+    public String[] getPenerbit(){
+        return penerbit;
     }
 
     @NonNull

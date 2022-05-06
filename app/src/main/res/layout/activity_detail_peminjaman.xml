@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="40dp"
-    tools:context=".Pinjam_buku.PinjamanSaya">
+    tools:context=".Pinjam_buku.DetailPeminjaman">
 
     <ImageView
         android:id="@+id/back"
         android:src="@drawable/back_icon"
         android:layout_marginLeft="20dp"
-        android:onClick="BackToProfile"
+        android:onClick="BackToPinjaman"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="Pinjaman Saya"
+        android:text="Detail Pinjaman Saya"
         android:textStyle="bold"
         style="@style/FontFamilyMedium"
         android:id="@+id/judul_page"
@@ -31,12 +31,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <TextView
+        android:id="@+id/text_kode_transaksi"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/judul_page"
+        android:layout_marginTop="40dp"
+        android:textSize="14sp"
+        style="@style/FontFamilyMedium"
+        android:layout_marginBottom="5dp"
+        android:text="Kode Transaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/kode_transaksi"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_kode_transaksi"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        style="@style/FontFamilyBold"
+        android:text="ABC38594"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/line_kode_transaksi"
+        android:layout_marginTop="10dp"
+        android:background="@color/black"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kode_transaksi"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        app:layout_constraintTop_toBottomOf="@+id/line_kode_transaksi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constrainedHeight="true"
         android:paddingHorizontal="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/swl_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="10"
-            tools:listitem="@layout/card_kode_buku">
+            tools:listitem="@layout/card_pinjaman_saya">
 
         </androidx.recyclerview.widget.RecyclerView>
 

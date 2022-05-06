@@ -91,6 +91,12 @@ public interface APIRequest {
             @Header("Authorization") String Token
     );
 
+    @GET("my-loan/detail/{id}")
+    Call<ResponseAPI> DetailLoan(
+            @Header("Authorization") String Token,
+            @Path(value = "id", encoded = true) int id
+    );
+
     @POST("loan")
     Call<ResponseAPI> LoanBuku(
             @Header("Authorization") String Token,

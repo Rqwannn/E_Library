@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.e_library.BluePrint.TranslucentOptions;
-import com.example.e_library.Chart.DaftarBuku;
 import com.example.e_library.Welcome.Welcome;
 
 public class SplashSceen extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class SplashSceen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashSceen.this, DaftarBuku.class);
+                Intent intent = new Intent(SplashSceen.this, Welcome.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.exit_right_to_left);
