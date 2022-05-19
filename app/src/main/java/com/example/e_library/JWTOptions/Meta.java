@@ -1,5 +1,7 @@
 package com.example.e_library.JWTOptions;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Meta {
     private String status;
     private String message;

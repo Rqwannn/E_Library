@@ -72,9 +72,6 @@ public class DaftarBuku extends AppCompatActivity {
                 if (Status.equals("success")){
                     getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getCart().getDetail());
                     raData = getAdapterClass;
-//                    id_book = getAdapterClass.getIdBook();
-//                    quantity = getAdapterClass.getQuantity();
-
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.GONE);

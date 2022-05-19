@@ -35,6 +35,7 @@ public class ResponseData {
 
     public List<BookCategoriesModel> getCategories(){ return categories; }
 
+
     public UserModel getOneUser() { return user; }
 
     public BukuModel getSingleBooks() { return SingleBooks; }

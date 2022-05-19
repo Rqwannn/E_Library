@@ -19,12 +19,24 @@ import retrofit2.http.Query;
 
 public interface APIRequest {
 
+    // Auth API
+
     @FormUrlEncoded
     @POST("login")
     Call<ResponseAPI> Authentication(
             @Field("username") String username,
             @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("register")
+    Call<ResponseAPI> Register(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("email") String email
+    );
+
+    // Forgot Password API
 
     @FormUrlEncoded
     @POST("password/email")
@@ -44,13 +56,6 @@ public interface APIRequest {
             @Field("code") String Code
     );
 
-    @FormUrlEncoded
-    @POST("register")
-    Call<ResponseAPI> Register(
-            @Field("username") String username,
-            @Field("password") String password,
-            @Field("email") String email
-    );
 
     //  With Token
 
