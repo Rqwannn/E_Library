@@ -35,7 +35,7 @@ public class PinjamanSaya extends AppCompatActivity {
     public void setDataPinjamanSaya(){
         String Token = SessionStorage.getString("Tokens", "");
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
-        Call<ResponseAPI> FeedBack = API.PinjamanSaya(
+        Call<ResponseAPI> FeedBack = API.Pinjaman(
                 "Bearer " + Token
         );
 

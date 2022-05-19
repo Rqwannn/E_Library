@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:text="Notifikasi"
+            android:text="Aktifitas"
             android:textStyle="bold"
             style="@style/FontFamilyMedium"
             app:layout_constraintTop_toTopOf="@+id/back_notifikasi"

@@ -9,12 +9,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.e_library.Adapter.DaftarBukuAdapter;
 import com.example.e_library.BluePrint.Items;
+import com.example.e_library.BluePrint.Keranjang;
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.Konfirmasi;
 import com.example.e_library.Model.APIRequest;
@@ -23,7 +29,10 @@ import com.example.e_library.Pinjam_buku.PinjamanSaya;
 import com.example.e_library.R;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,9 +47,14 @@ public class DaftarBuku extends AppCompatActivity {
     ProgressBar PBData;
     SharedPreferences SessionStorage;
     int id_book[], quantity[];
-    MaterialButton submit;
+    MaterialButton submit, yakin, kembali;
+    MaterialCardView pop_up_checkout;
     TextInputEditText tanggal_pinjam;
     DaftarBukuAdapter getAdapterClass;
+    FrameLayout black_screen;
+
+    Animation animFadein, animFadeout;
+    ArrayList<Keranjang> DataKeranjang = new ArrayList<Keranjang>();
 
     public void setDaftarBuku(){
         String Token = SessionStorage.getString("Tokens", "");
@@ -56,8 +70,10 @@ public class DaftarBuku extends AppCompatActivity {
                 String Status = response.body().getMeta().getStatus();
 
                 if (Status.equals("success")){
-                    getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getPinjamanSaya());
+                    getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getCart().getDetail());
                     raData = getAdapterClass;
+//                    id_book = getAdapterClass.getIdBook();
+//                    quantity = getAdapterClass.getQuantity();
 
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
@@ -103,21 +119,74 @@ public class DaftarBuku extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         tanggal_pinjam = findViewById(R.id.tanggal_pinjam);
 
+        pop_up_checkout = findViewById(R.id.daftar_pop_up);
+        black_screen = findViewById(R.id.black_screen);
+
+        animFadein = AnimationUtils.loadAnimation(DaftarBuku.this,
+                R.anim.fade_in);
+        animFadeout = AnimationUtils.loadAnimation(DaftarBuku.this,
+                R.anim.fade_out);
+
+        yakin = findViewById(R.id.yakin);
+        kembali = findViewById(R.id.kembali);
+
+        yakin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pop_up_checkout.startAnimation(animFadeout);
+                pop_up_checkout.setVisibility(View.GONE);
+
+                black_screen.startAnimation(animFadeout);
+                black_screen.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        black_screen.clearAnimation();
+                        pop_up_checkout.clearAnimation();
+                    }
+                }, 500);
+            }
+        });
+
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pop_up_checkout.startAnimation(animFadeout);
+                pop_up_checkout.setVisibility(View.GONE);
+
+                black_screen.startAnimation(animFadeout);
+                black_screen.setVisibility(View.GONE);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        black_screen.clearAnimation();
+                        pop_up_checkout.clearAnimation();
+                    }
+                }, 500);
+            }
+        });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (tanggal_pinjam.getText().toString().equals("")){
                     Toast.makeText(DaftarBuku.this, "Mohon Isi Tanggal Peminjaman", Toast.LENGTH_SHORT).show();
                 } else {
-                    id_book = getAdapterClass.getIdBook();
-                    quantity = getAdapterClass.getQuantity();
+//                    Log.d("checkout", String.valueOf(id_book));
+//                    id_book = getAdapterClass.getIdBook();
+//                    quantity = getAdapterClass.getQuantity();
 
-                    Intent intent = new Intent(DaftarBuku.this, Konfirmasi.class);
-                    intent.putExtra("loan_date", tanggal_pinjam.getText().toString());
-                    intent.putExtra("id_book", id_book);
-                    intent.putExtra("quantity", quantity);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+//                    Keranjang keranjang = new Keranjang(id_book, quantity)
+//                    DataKeranjang.add()
+
+//                    Intent intent = new Intent(DaftarBuku.this, Konfirmasi.class);
+//                    intent.putExtra("loan_date", tanggal_pinjam.getText().toString());
+//                    intent.putExtra("id_book", id_book);
+//                    intent.putExtra("quantity", quantity);
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
                 }
             }
         });
@@ -125,5 +194,11 @@ public class DaftarBuku extends AppCompatActivity {
 
     public void BackToProfile(View view) {
         finish();
+    }
+
+    public void onNodeCheckoutListener(View view) {
+        if (tanggal_pinjam.getText().toString().equals("")){
+            Toast.makeText(DaftarBuku.this, "Mohon Isi Tanggal Peminjaman", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="Daftar Buku"
+        android:text="Keranjang"
         android:textStyle="bold"
         style="@style/FontFamilyMedium"
         android:id="@+id/judul_page"
@@ -33,7 +33,7 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         app:layout_constraintTop_toBottomOf="@+id/judul_page"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/card_checkout"
         app:layout_constrainedHeight="true"
         android:layout_marginTop="40dp"
         android:id="@+id/swl_data"
@@ -107,7 +107,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/field_radius"
                     style="@style/FontFamily"
-                    android:focusable="false"
                     android:hint="Tanggal Pinjam"
                     android:textColorHint="@color/black"
                     android:maxLength="30"
@@ -136,5 +135,19 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <include android:id="@+id/black_screen"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        layout="@layout/black_screen"
+        />
+
+    <include layout="@layout/pop_up_checkout"
+        android:id="@+id/daftar_pop_up"
+        android:layout_width="250sp"
+        android:layout_height="175sp"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

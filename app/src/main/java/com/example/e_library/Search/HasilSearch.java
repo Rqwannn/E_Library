@@ -141,8 +141,8 @@ public class HasilSearch extends AppCompatActivity {
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
         FeedBack = API.HasilSearch(
                 "Bearer " + Token,
-                Search,
-                Filter
+                Search
+//                Filter
         );
 
         FeedBack.enqueue(new Callback<ResponseAPI>() {

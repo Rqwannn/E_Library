@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,8 +19,11 @@ import com.example.e_library.Login;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
+import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.ResponseAPI;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +34,7 @@ public class DetailBuku extends AppCompatActivity {
     SharedPreferences SessionStorage;
     TextView judul_buku, penulis, penerbit, tanggal, deskripsi;
     MaterialButton kategori, jumlah_buku, pinjam_buku;
+    ShapeableImageView gambar_buku;
     int id_buku;
 
     @Override
@@ -45,6 +50,7 @@ public class DetailBuku extends AppCompatActivity {
 
         id_buku = extra.getInt("ID_BUKU", 0);
 
+        gambar_buku = findViewById(R.id.gambar_buku);
         judul_buku = findViewById(R.id.judul_buku);
         penulis = findViewById(R.id.penulis);
         penerbit = findViewById(R.id.penerbit);
@@ -67,15 +73,21 @@ public class DetailBuku extends AppCompatActivity {
                 String CheckStatus = response.body().getMeta().getStatus();
 
                 if (CheckStatus.equals("success")){
+                    BukuModel buku = response.body().getResponseData().getSingleBooks();
+                    String imgURL = RetroServer.imgBukuURL;
 
-//                    judul_buku.setText();
-//                    penulis.setText();
-//                    penerbit.setText();
-//                    tanggal.setText();
-//                    deskripsi.setText();
-//
-//                    kategori.setText();
-//                    jumlah_buku.setText();
+                    Picasso.get()
+                            .load(imgURL + buku.getNamaGambar())
+                            .into(gambar_buku);
+
+                    judul_buku.setText(buku.getTitle());
+                    penulis.setText(buku.getAuthor());
+                    penerbit.setText(buku.getPublisher());
+                    tanggal.setText(buku.getYearPublisher());
+                    deskripsi.setText(buku.getDescription());
+
+                    kategori.setText(buku.getCategory().getName());
+                    jumlah_buku.setText(buku.getQuantity());
 
                 } else {
                     Toast.makeText(DetailBuku.this, response.body().getMeta().getMessage(), Toast.LENGTH_LONG ).show();
@@ -108,9 +120,9 @@ public class DetailBuku extends AppCompatActivity {
         FeedBack.enqueue(new Callback<ResponseAPI>() {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                String CheckStatus = response.body().getMeta().getStatus();
+//                String CheckStatus = response.body().getMeta().getStatus();
 
-                if (CheckStatus.equals("success")){
+//                if (CheckStatus.equals("success")){
 
                     Toast.makeText(DetailBuku.this, "Buku anda sudah terdaftar", Toast.LENGTH_SHORT).show();
 
@@ -118,9 +130,9 @@ public class DetailBuku extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
-                } else {
-                    Toast.makeText(DetailBuku.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
-                }
+//                } else {
+//                    Toast.makeText(DetailBuku.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
+//                }
             }
 
             @Override

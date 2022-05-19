@@ -41,13 +41,15 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:src="@drawable/contoh_buku"
+            android:id="@+id/gambar_buku"
             app:shapeAppearanceOverlay="@style/roundImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_width="120sp"
+            android:layout_height="180sp"/>
 
         <RelativeLayout
             android:paddingVertical="10dp"
             android:paddingHorizontal="20dp"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -84,14 +86,14 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:layout_marginBottom="7dp"
                 android:id="@+id/text_penerbit"
-                android:text="Penerbit :"
-                android:textSize="14sp"
-                android:layout_below="@+id/text_penulis"
                 style="@style/FontFamilyMedium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/penulis"
+                android:layout_marginBottom="7dp"
+                android:text="Penerbit :"
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_marginLeft="5dp"
@@ -99,7 +101,7 @@
                 android:id="@+id/penerbit"
                 android:text="Airlangga"
                 android:textSize="14sp"
-                android:layout_below="@+id/text_penulis"
+                android:layout_below="@+id/penulis"
                 android:layout_toRightOf="@+id/text_penerbit"
                 style="@style/FontFamilyMedium"
                 android:layout_width="wrap_content"
@@ -128,9 +130,9 @@
                     android:text="Kelas X"
                     android:textColor="@color/black"
                     android:layout_weight="1"
-                    android:layout_marginRight="15dp"
-                    android:textSize="12sp"
-                    android:minHeight="28dp"
+                    android:layout_marginRight="5dp"
+                    android:textSize="9sp"
+                    android:minHeight="35dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -140,7 +142,7 @@
                     android:textSize="12sp"
                     android:backgroundTint="@color/gray"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:minHeight="28dp"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"

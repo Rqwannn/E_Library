@@ -8,12 +8,14 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIRequest {
 
@@ -76,35 +78,49 @@ public interface APIRequest {
             @Header("Authorization") String Token
     );
 
-    @FormUrlEncoded
-    @POST("books/hasil_search")
+    @GET("books?")
     Call<ResponseAPI> HasilSearch(
             @Header("Authorization") String Token,
-            @Field("key") String Key,
-            @Field("filter") String Filter
+            @Query("search") String search
+//            @Field("key") String Key,
+//            @Field("filter") String Filter
     );
 
     // Pinjaman API
 
-    @GET("my-loan")
+    @GET("transaction")
+    Call<ResponseAPI> Pinjaman(
+            @Header("Authorization") String Token
+    );
+
+    @GET("cart")
     Call<ResponseAPI> PinjamanSaya(
             @Header("Authorization") String Token
     );
 
-    @GET("my-loan/detail/{id}")
+    @GET("transaction/{id}")
     Call<ResponseAPI> DetailLoan(
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
     );
 
-    @POST("loan")
+    @POST("transaction")
     Call<ResponseAPI> LoanBuku(
             @Header("Authorization") String Token,
             @Body Items item
     );
 
-    @GET("loan/{id}")
+    @FormUrlEncoded
+    @POST("cart-detail")
     Call<ResponseAPI> SingleLoan(
+            @Header("Authorization") String Token,
+            @Field("book_id") int ID_BOOK
+    );
+
+    // Cart
+
+    @DELETE("cart-detail/{id}")
+    Call<ResponseAPI> DeleteKeranjang(
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
     );
@@ -125,7 +141,7 @@ public interface APIRequest {
             @Field("name") String Nama,
             @Field("username") String Username,
             @Field("email") String Email,
-            @Field("phone") int Phone
+            @Field("phone") String Phone
     );
 
     // Other API
