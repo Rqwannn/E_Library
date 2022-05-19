@@ -37,7 +37,7 @@ public class DaftarBuku extends AppCompatActivity {
     SwipeRefreshLayout SWL;
     ProgressBar PBData;
     SharedPreferences SessionStorage;
-    int id_book[], quantity[];
+    int id_book[], quantity[], id_buku;
     MaterialButton submit;
     TextInputEditText tanggal_pinjam;
     DaftarBukuAdapter getAdapterClass;
@@ -56,9 +56,9 @@ public class DaftarBuku extends AppCompatActivity {
                 String Status = response.body().getMeta().getStatus();
 
                 if (Status.equals("success")){
-                    getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getPinjamanSaya());
+                    getAdapterClass = new DaftarBukuAdapter(DaftarBuku.this, response.body().getResponseData().getItems().getDetail());
                     raData = getAdapterClass;
-
+                    id_buku = response.body().getResponseData().getItems().getId();
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.GONE);

@@ -17,12 +17,24 @@ import retrofit2.http.Path;
 
 public interface APIRequest {
 
+    // Auth API
+
     @FormUrlEncoded
     @POST("login")
     Call<ResponseAPI> Authentication(
             @Field("username") String username,
             @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("register")
+    Call<ResponseAPI> Register(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("email") String email
+    );
+
+    // Forgot Password API
 
     @FormUrlEncoded
     @POST("password/email")
@@ -42,13 +54,6 @@ public interface APIRequest {
             @Field("code") String Code
     );
 
-    @FormUrlEncoded
-    @POST("register")
-    Call<ResponseAPI> Register(
-            @Field("username") String username,
-            @Field("password") String password,
-            @Field("email") String email
-    );
 
     //  With Token
 
@@ -86,25 +91,31 @@ public interface APIRequest {
 
     // Pinjaman API
 
-    @GET("my-loan")
+    @GET("transaction")
     Call<ResponseAPI> PinjamanSaya(
             @Header("Authorization") String Token
     );
 
-    @GET("my-loan/detail/{id}")
+    @GET("checkout-page")
     Call<ResponseAPI> DetailLoan(
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
     );
 
-    @POST("loan")
+    @POST("transaction")
     Call<ResponseAPI> LoanBuku(
             @Header("Authorization") String Token,
             @Body Items item
     );
 
-    @GET("loan/{id}")
+    @GET("transaction/{id}")
     Call<ResponseAPI> SingleLoan(
+            @Header("Authorization") String Token,
+            @Path(value = "id", encoded = true) int id
+    );
+
+    @GET("LoanDetail/{id}")
+    Call<ResponseAPI> LoanDetail(
             @Header("Authorization") String Token,
             @Path(value = "id", encoded = true) int id
     );

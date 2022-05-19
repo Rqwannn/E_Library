@@ -100,7 +100,7 @@ public class DetailBuku extends AppCompatActivity {
 
         APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
         String Token = SessionStorage.getString("Tokens", "");
-        Call<ResponseAPI> FeedBack = API.SingleLoan(
+        Call<ResponseAPI> FeedBack = API.LoanDetail(
                 "Bearer " + Token,
                 id_buku
         );

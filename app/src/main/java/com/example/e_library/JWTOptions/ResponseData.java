@@ -2,6 +2,7 @@ package com.example.e_library.JWTOptions;
 
 import com.example.e_library.Response.BookCategoriesModel;
 import com.example.e_library.Response.BukuModel;
+import com.example.e_library.Response.ItemsModel;
 import com.example.e_library.Response.TransactionsModel;
 import com.example.e_library.Response.UserModel;
 
@@ -14,10 +15,11 @@ public class ResponseData {
     private String message;
     private int code;
 
-    List<BukuModel> buku;
+    List<BukuModel> books;
     List<TransactionsModel> transaction;
     List<BookCategoriesModel> categories;
 
+    ItemsModel items;
     UserModel user;
 
     public String getTokenType() { return token_type; }
@@ -26,11 +28,13 @@ public class ResponseData {
 
     public String getMessage() { return message; }
 
-    public List<BukuModel> getBuku() { return buku; }
+    public List<BukuModel> getBuku() { return books; }
 
     public List<TransactionsModel> getPinjamanSaya() { return transaction; }
 
     public List<BookCategoriesModel> getCategories(){ return categories; }
+
+    public ItemsModel getItems() { return items; }
 
     public UserModel getOneUser() { return user; }
 

@@ -18,6 +18,8 @@ import com.example.e_library.BluePrint.InputFilterMinMax;
 import com.example.e_library.Chart.DaftarBuku;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
+import com.example.e_library.Response.DetailItem;
+import com.example.e_library.Response.ItemsModel;
 import com.example.e_library.Response.TransactionsModel;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
@@ -29,12 +31,12 @@ import java.util.Map;
 
 public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.HolderData> {
 
-    private List<TransactionsModel> Data;
+    private List<DetailItem> Data;
     private Context ctx;
     int id_book[], quantity[];
     String judul_buku[], penerbit[];
 
-    public DaftarBukuAdapter(Context ctx, List<TransactionsModel> getDaftarBuku) {
+    public DaftarBukuAdapter(Context ctx, List<DetailItem> getDaftarBuku) {
         this.ctx = ctx;
         this.Data = getDaftarBuku;
     }
@@ -67,7 +69,7 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull HolderData holder, int position) {
-        TransactionsModel Model = Data.get(position);
+        DetailItem Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
 
         holder.judul_buku.setText(Model.getBook().getTitle());
@@ -100,7 +102,7 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
         });
 
         Picasso.get()
-                .load(imgURL + Model.getImg())
+                .load(imgURL + Model.getBook().getNamaGambar())
                 .into(holder.gambar_daftar_buku);
     }
 

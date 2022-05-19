@@ -3,12 +3,14 @@ package com.example.e_library.Search;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.e_library.BluePrint.TranslucentOptions;
 import com.example.e_library.JWTOptions.JWTAuth;
@@ -18,6 +20,8 @@ import com.example.e_library.R;
 public class Searching extends AppCompatActivity {
     SearchView search;
     SharedPreferences SessionStorage;
+    SwipeRefreshLayout SWL;
+    ProgressBar PBData;
     RecyclerView rvData;
     RecyclerView.LayoutManager rlData;
     RecyclerView.Adapter raData;

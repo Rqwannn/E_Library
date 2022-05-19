@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:text="Daftar Buku"
+        android:text="Keranjang"
         android:textStyle="bold"
         style="@style/FontFamilyMedium"
         android:id="@+id/judul_page"
