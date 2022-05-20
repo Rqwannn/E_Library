@@ -4,8 +4,9 @@ public class TransactionsModel {
     private int id;
     private int book_id;
     private int users_id;
-    private String quantity, loan_date, return_date, status, created_at, updated_at, deleted_at, img, kode_peminjaman;
+    private String quantity, loan_date, return_date, status, created_at, updated_at, deleted_at, img, order_code;
     private BukuModel book;
+    CartModel cart;
 
     public int getId() { return id; }
 
@@ -15,7 +16,7 @@ public class TransactionsModel {
 
     public String getStatus() { return status; }
 
-    public String getKodePeminjaman() { return kode_peminjaman; }
+    public String getKodePeminjaman() { return order_code; }
 
     public String getQuantity() { return quantity; }
 
@@ -24,6 +25,8 @@ public class TransactionsModel {
     public String getUpdated() { return updated_at; }
 
     public String getDeleted() { return deleted_at; }
+
+    public CartModel getCart() { return cart; }
 
     public String getImg() { return img; }
 

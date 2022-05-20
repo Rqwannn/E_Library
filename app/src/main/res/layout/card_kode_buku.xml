@@ -36,17 +36,6 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/text_tanggal_pinjam"
-            app:layout_constraintRight_toLeftOf="@+id/tanggal_pinjam"
-            app:layout_constraintTop_toTopOf="@+id/text_kode_transaksi"
-            app:layout_constraintBottom_toBottomOf="@+id/text_kode_transaksi"
-            android:textSize="11sp"
-            style="@style/FontFamilyMedium"
-            android:text="Tgl Pinjam : "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
             android:id="@+id/tanggal_pinjam"
             app:layout_constraintRight_toLeftOf="@+id/right_edit_icon"
             app:layout_constraintTop_toTopOf="@+id/text_kode_transaksi"

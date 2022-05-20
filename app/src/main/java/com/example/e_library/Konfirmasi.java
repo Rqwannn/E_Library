@@ -3,7 +3,6 @@ package com.example.e_library;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,22 +10,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.example.e_library.BluePrint.Items;
 import com.example.e_library.BluePrint.TranslucentOptions;
-import com.example.e_library.JWTOptions.JWTAuth;
-import com.example.e_library.Model.APIRequest;
-import com.example.e_library.Model.RetroServer;
-import com.example.e_library.Pinjam_buku.PinjamanSaya;
-import com.example.e_library.Response.ResponseAPI;
-import com.example.e_library.Search.HasilSearch;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Konfirmasi extends AppCompatActivity {
     SharedPreferences SessionStorage;

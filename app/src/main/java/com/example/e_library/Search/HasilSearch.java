@@ -142,7 +142,37 @@ public class HasilSearch extends AppCompatActivity {
         FeedBack = API.HasilSearch(
                 "Bearer " + Token,
                 Search
-//                Filter
+        );
+
+        FeedBack.enqueue(new Callback<ResponseAPI>() {
+            @Override
+            public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
+                String Success = response.body().getMeta().getMessage();
+                String Status = response.body().getMeta().getStatus();
+
+                if (Status.equals("success")){
+                    raData = new KategoriBukuAdapter(HasilSearch.this, response.body().getResponseData().getBuku(), R.layout.card_detail_kategori_grid);
+                    rvData.setAdapter(raData);
+                    raData.notifyDataSetChanged();
+                    PBData.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(HasilSearch.this, Success, Toast.LENGTH_LONG ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseAPI> call, Throwable t) {
+                Toast.makeText(HasilSearch.this,"Status: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setDataHasilFilter(){
+        String Token = SessionStorage.getString("Tokens", "");
+        APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
+        FeedBack = API.HasilSearch(
+                "Bearer " + Token,
+                Filter
         );
 
         FeedBack.enqueue(new Callback<ResponseAPI>() {
@@ -225,7 +255,7 @@ public class HasilSearch extends AppCompatActivity {
             }
         }, 500);
 
-        setDataHasilSearch();
+        setDataHasilFilter();
     }
 
     public void Pakai(View view) {
@@ -246,6 +276,6 @@ public class HasilSearch extends AppCompatActivity {
         }, 500);
 
         search.setQueryHint("Cari " + Filter);
-        setDataHasilSearch();
+        setDataHasilFilter();
     }
 }

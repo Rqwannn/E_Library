@@ -22,6 +22,7 @@ public class ResponseData {
     UserModel user;
     BukuModel SingleBooks;
     CartModel cart;
+    TransactionsModel transaction;
 
     public String getTokenType() { return token_type; }
 
@@ -35,6 +36,7 @@ public class ResponseData {
 
     public List<BookCategoriesModel> getCategories(){ return categories; }
 
+    public TransactionsModel getDetailPinjaman() { return transaction; }
 
     public UserModel getOneUser() { return user; }
 

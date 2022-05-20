@@ -120,9 +120,9 @@ public class DetailBuku extends AppCompatActivity {
         FeedBack.enqueue(new Callback<ResponseAPI>() {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
-                String CheckStatus = response.body().getMeta().getStatus();
-
-                if (CheckStatus.equals("success")){
+//                String CheckStatus = response.body().getMeta().getStatus();
+//
+//                if (CheckStatus.equals("success")){
 
                     Toast.makeText(DetailBuku.this, "Buku anda sudah terdaftar", Toast.LENGTH_SHORT).show();
 
@@ -130,9 +130,9 @@ public class DetailBuku extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
-                } else {
-                    Toast.makeText(DetailBuku.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
-                }
+//                } else {
+//                    Toast.makeText(DetailBuku.this, response.body().getResponseData().getMessage(), Toast.LENGTH_LONG ).show();
+//                }
             }
 
             @Override

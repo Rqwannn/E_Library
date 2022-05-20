@@ -1,10 +1,7 @@
 package com.example.e_library.Model;
 
-import com.example.e_library.BluePrint.Items;
+import com.example.e_library.Chart.Items;
 import com.example.e_library.Response.ResponseAPI;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -87,8 +84,12 @@ public interface APIRequest {
     Call<ResponseAPI> HasilSearch(
             @Header("Authorization") String Token,
             @Query("search") String search
-//            @Field("key") String Key,
-//            @Field("filter") String Filter
+    );
+
+    @GET("books?")
+    Call<ResponseAPI> HasilFilter(
+            @Header("Authorization") String Token,
+            @Query("categories") String search
     );
 
     // Pinjaman API

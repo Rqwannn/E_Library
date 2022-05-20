@@ -45,19 +45,20 @@ public class KodePinjamanAdapter extends RecyclerView.Adapter<KodePinjamanAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull HolderData holder, int position) {
         TransactionsModel Model = Data.get(position);
+        String Code = Model.getKodePeminjaman();
 
         holder.card_kode_pinjaman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ctx, DetailPeminjaman.class);
                 intent.putExtra("id_pinjaman", Model.getId());
-                intent.putExtra("kode_peminjaman", Model.getKodePeminjaman());
+                intent.putExtra("kode_peminjaman", Code);
                 ctx.startActivity(intent);
                 ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
             }
         });
 
-        holder.kode_transaksi.setText(Model.getKodePeminjaman());
+        holder.kode_transaksi.setText(Code);
         holder.tanggal_buku.setText(Model.getLoanDate());
     }
 

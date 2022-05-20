@@ -45,22 +45,22 @@ public class BukuFavorite extends RecyclerView.Adapter<BukuFavorite.HolderData> 
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull BukuFavorite.HolderData holder, int position) {
-//        BukuModel Model = Data.get(position);
-//        String imgURL = RetroServer.imgBukuURL;
-//
-//        Picasso.get()
-//                .load(imgURL + Model.getNamaGambar())
-//                .into(holder.Gambar);
-//
-//        holder.Gambar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(ctx, DetailBuku.class);
-//                intent.putExtra("ID_BUKU", Model.getID());
-//                ctx.startActivity(intent);
-//                ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
-//            }
-//        });
+        BukuModel Model = Data.get(position);
+        String imgURL = RetroServer.imgBukuURL;
+
+        Picasso.get()
+                .load(imgURL + Model.getNamaGambar())
+                .into(holder.Gambar);
+
+        holder.Gambar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, DetailBuku.class);
+                intent.putExtra("ID_BUKU", Model.getID());
+                ctx.startActivity(intent);
+                ((Activity)ctx).overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
+            }
+        });
     }
 
     @Override

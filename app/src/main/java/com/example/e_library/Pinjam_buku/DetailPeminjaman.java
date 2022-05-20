@@ -47,9 +47,11 @@ public class DetailPeminjaman extends AppCompatActivity {
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
                 String Success = response.body().getMeta().getMessage();
                 String Status = response.body().getMeta().getStatus();
+                String loan_date = response.body().getResponseData().getDetailPinjaman().getLoanDate();
+                String return_date = response.body().getResponseData().getDetailPinjaman().getReturnDate();
 
                 if (Status.equals("success")){
-                    raData = new PinjamanSayaAdapter(DetailPeminjaman.this, response.body().getResponseData().getPinjamanSaya());
+                    raData = new PinjamanSayaAdapter(DetailPeminjaman.this, response.body().getResponseData().getDetailPinjaman().getCart().getDetail(), loan_date, return_date);
                     rvData.setAdapter(raData);
                     raData.notifyDataSetChanged();
                     PBData.setVisibility(View.GONE);
@@ -82,7 +84,7 @@ public class DetailPeminjaman extends AppCompatActivity {
         PBData = findViewById(R.id.pb_data);
         kode_transaksi = findViewById(R.id.kode_transaksi);
 
-        kode_transaksi.setText(extra.getString("kode_transaksi"));
+        kode_transaksi.setText(extra.getString("kode_peminjaman"));
 
         rlData = new LinearLayoutManager(DetailPeminjaman.this, LinearLayoutManager.VERTICAL, false);
         rvData.setLayoutManager(rlData);

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.R;
+import com.example.e_library.Response.DetailCartModel;
 import com.example.e_library.Response.TransactionsModel;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
@@ -21,12 +22,15 @@ import java.util.List;
 
 public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapter.HolderData> {
 
-    private List<TransactionsModel> Data;
+    private List<DetailCartModel> Data;
     private Context ctx;
+    String Loan_date, return_date;
 
-    public PinjamanSayaAdapter(Context ctx, List<TransactionsModel> getPinjamanSaya) {
+    public PinjamanSayaAdapter(Context ctx, List<DetailCartModel> getPinjamanSaya, String new_loan_date, String new_return_date) {
         this.ctx = ctx;
         this.Data = getPinjamanSaya;
+        this.Loan_date = new_loan_date;
+        this.return_date = new_return_date;
     }
 
     @NonNull
@@ -40,16 +44,16 @@ public class PinjamanSayaAdapter extends RecyclerView.Adapter<PinjamanSayaAdapte
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull PinjamanSayaAdapter.HolderData holder, int position) {
-        TransactionsModel Model = Data.get(position);
+        DetailCartModel Model = Data.get(position);
         String imgURL = RetroServer.imgBukuURL;
 
         holder.judul_buku.setText(Model.getBook().getTitle());
         holder.pengarang_buku.setText(Model.getBook().getAuthor());
-        holder.tanggal_peminjaman.setText(Model.getLoanDate());
-        holder.jadwal_peminjaman.setText(Model.getReturnDate());
+        holder.tanggal_peminjaman.setText(this.Loan_date);
+        holder.jadwal_peminjaman.setText(this.return_date);
 
         Picasso.get()
-                .load(imgURL + Model.getImg())
+                .load(imgURL + Model.getBook().getNamaGambar())
                 .into(holder.gambar_buku_detail_favorite);
     }
 

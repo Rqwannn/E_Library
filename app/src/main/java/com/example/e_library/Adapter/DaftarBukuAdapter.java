@@ -24,11 +24,14 @@ import com.example.e_library.R;
 import com.example.e_library.Response.BukuModel;
 import com.example.e_library.Response.DetailCartModel;
 import com.example.e_library.Response.TransactionsModel;
+import com.example.e_library.RoomDB.AppDatabase;
+import com.example.e_library.RoomDB.Product;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,11 +40,14 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
     private List<DetailCartModel> Data;
     private Context ctx;
     int id_book[], quantityArray[];
-    String judul_buku[], penerbit[];
 
-    public DaftarBukuAdapter(Context ctx, List<DetailCartModel> getDaftarBuku) {
+    //setting onclicklistener
+    private onNodeListener onNodeListener;
+
+    public DaftarBukuAdapter(Context ctx, List<DetailCartModel> getDaftarBuku, onNodeListener onNodeListener) {
         this.ctx = ctx;
         this.Data = getDaftarBuku;
+        this.onNodeListener = onNodeListener;
     }
 
     public int[] getIdBook() {
@@ -58,7 +64,7 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
     @Override
     public HolderData onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_daftar_buku, parent, false);
-        DaftarBukuAdapter.HolderData holder = new DaftarBukuAdapter.HolderData(layout);
+        DaftarBukuAdapter.HolderData holder = new DaftarBukuAdapter.HolderData(layout, onNodeListener);
         return holder;
     }
 
@@ -82,6 +88,13 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
                 holder.quantity_buku.setText(String.valueOf(Integer.parseInt(quantity) + 1));
             }
         });
+
+//        AppDatabase db  = AppDatabase.getDbInstance(ctx);
+//
+//        Product product  = new Product();
+//        product.id_book = Model.getBook().getID();
+//        product.quantity = holder.quantity_buku.getText().toString();
+//        db.productDao().insertProduct(product);
 
         holder.minus_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,13 +124,16 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
         return Data.size();
     }
 
-    public class HolderData extends RecyclerView.ViewHolder {
+    public class HolderData extends RecyclerView.ViewHolder implements View.OnClickListener {
         ShapeableImageView gambar_daftar_buku;
         ImageView delete_buku, plus_icon, minus_icon;
         TextView judul_buku, penerbit;
         EditText quantity_buku;
 
-        public HolderData(@NonNull @NotNull View itemView) {
+        onNodeListener onNodeListener;
+
+
+        public HolderData(@NonNull @NotNull View itemView, onNodeListener onNodeListener) {
             super(itemView);
 
             gambar_daftar_buku = itemView.findViewById(R.id.gambar_daftar_buku);
@@ -127,6 +143,19 @@ public class DaftarBukuAdapter extends RecyclerView.Adapter<DaftarBukuAdapter.Ho
             plus_icon = itemView.findViewById(R.id.plus_icon);
             minus_icon = itemView.findViewById(R.id.minus_icon);
             quantity_buku = itemView.findViewById(R.id.quantity_buku);
+
+            this.onNodeListener = onNodeListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onNodeListener.onNodeClick(getAdapterPosition());
+        }
+    }
+
+    public interface onNodeListener{
+        void onNodeClick(int position);
     }
 }
