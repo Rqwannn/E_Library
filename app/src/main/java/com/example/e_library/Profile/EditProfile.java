@@ -62,7 +62,7 @@ public class EditProfile extends AppCompatActivity {
                 } else {
                     APIRequest API = RetroServer.KonekServer().create(APIRequest.class);
                     Call<ResponseAPI> FeedBack = API.UpdateProfile(
-                            SessionStorage.getString("Tokens", ""),
+                            "Bearer " + SessionStorage.getString("Tokens", ""),
                             namaText,
                             usernameText,
                             emailText,

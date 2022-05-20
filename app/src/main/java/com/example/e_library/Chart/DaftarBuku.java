@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.e_library.Adapter.DaftarBukuAdapter;
 import com.example.e_library.BluePrint.Keranjang;
 import com.example.e_library.BluePrint.TranslucentOptions;
+import com.example.e_library.Kategori_buku.DetailBuku;
 import com.example.e_library.Model.APIRequest;
 import com.example.e_library.Model.RetroServer;
 import com.example.e_library.Pinjam_buku.PinjamanSaya;
@@ -166,6 +168,9 @@ public class DaftarBuku extends AppCompatActivity implements DaftarBukuAdapter.o
             @Override
             public void onClick(View v) {
 //                setCheckout();
+                Intent intent = new Intent(DaftarBuku.this, PinjamanSaya.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.enter_rigth_to_left, R.anim.stay_position);
             }
         });
 

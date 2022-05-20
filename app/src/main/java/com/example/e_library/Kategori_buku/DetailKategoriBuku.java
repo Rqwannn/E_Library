@@ -122,17 +122,21 @@ public class DetailKategoriBuku extends AppCompatActivity {
         pb_data_2 = findViewById(R.id.pb_data_2);
         pb_data_3 = findViewById(R.id.pb_data_3);
 
-        parent_card_Detail_kategori_1 = findViewById(R.id.parent_card_Detail_kategori);
-        parent_card_Detail_kategori_2 = findViewById(R.id.parent_card_Detail_kategori_2);
-        parent_card_Detail_kategori_3 = findViewById(R.id.parent_card_Detail_kategori_3);
+        pb_data.setVisibility(View.GONE);
+        pb_data_2.setVisibility(View.GONE);
+        pb_data_3.setVisibility(View.GONE);
 
-        setKategoriAdapter(pb_data, rvData_1);
-        setKategoriAdapter(pb_data_2, rvData_2);
-        setKategoriAdapter(pb_data_3, rvData_3);
-
-        RefreshData(parent_card_Detail_kategori_1, pb_data, rvData_1);
-        RefreshData(parent_card_Detail_kategori_2, pb_data_2, rvData_2);
-        RefreshData(parent_card_Detail_kategori_3, pb_data_3, rvData_3);
+//        parent_card_Detail_kategori_1 = findViewById(R.id.parent_card_Detail_kategori);
+//        parent_card_Detail_kategori_2 = findViewById(R.id.parent_card_Detail_kategori_2);
+//        parent_card_Detail_kategori_3 = findViewById(R.id.parent_card_Detail_kategori_3);
+//
+//        setKategoriAdapter(pb_data, rvData_1);
+//        setKategoriAdapter(pb_data_2, rvData_2);
+//        setKategoriAdapter(pb_data_3, rvData_3);
+//
+//        RefreshData(parent_card_Detail_kategori_1, pb_data, rvData_1);
+//        RefreshData(parent_card_Detail_kategori_2, pb_data_2, rvData_2);
+//        RefreshData(parent_card_Detail_kategori_3, pb_data_3, rvData_3);
 
         back_kategori.setOnClickListener(new View.OnClickListener() {
             @Override
